@@ -23,5 +23,16 @@ namespace Pacientes
             VerPacientes form = new VerPacientes();
             form.Show();
         }
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarSesion_Click(object sender, EventArgs e)
+        {
+            AgregarSesion form = new AgregarSesion();
+            form.Show();
+        }
     }
 }

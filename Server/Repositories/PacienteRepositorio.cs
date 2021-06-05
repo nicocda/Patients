@@ -37,5 +37,15 @@ namespace Server.Repositories
             return Context.Pacientes.FirstOrDefault(x => x.NombreApellido == nombreApellido && x.DNI == dni);
 
         }
+
+        internal Paciente ObtenerPacienteDni(string dni)
+        {
+            return Context.Pacientes.FirstOrDefault(x => x.DNI == dni);
+        }
+
+        internal List<Paciente> ObtenerPacienteNombre(string[] nombres)
+        {
+            return Context.Pacientes.Where(x => nombres.Any(c=>c.Contains(x.NombreApellido))).ToList();
+        }
     }
 }

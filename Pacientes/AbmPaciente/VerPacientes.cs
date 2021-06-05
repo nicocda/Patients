@@ -20,9 +20,22 @@ namespace Pacientes.AbmPaciente
 
         private void VerPacientes_Load(object sender, EventArgs e)
         {
+            recargarTabla();
+        }
+
+        private void recargarTabla()
+        {
             Logica logica = new Logica();
             var data = logica.ObtenerPacientes();
             ListaPacientes.DataSource = data;
+
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            AgregarPaciente form = new AgregarPaciente();
+            form.ShowDialog();
+            recargarTabla();
         }
     }
 }

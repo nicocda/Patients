@@ -51,7 +51,7 @@ namespace Server
             Repositorio.Guardar(p);
         }
 
-        public void GuardarPaciente(Paciente p)
+        public Paciente GuardarPaciente(Paciente p)
         {
             if (p == null)
                 throw new Exception("Error al reconocer un paciente");
@@ -75,6 +75,7 @@ namespace Server
             pacienteDB.Genero = p.Genero;
 
             Repositorio.Guardar(pacienteDB);
+            return pacienteDB;
         }
 
         public Paciente ObtenerPaciente(int pacienteId)
@@ -85,6 +86,28 @@ namespace Server
             Paciente p = Repositorio.ObtenerUno(pacienteId);
             if (p == null)
                 throw new Exception("Paciente no encontrado");
+            return p;
+        }
+
+        public Paciente ObtenerPacienteDni(string dni)
+        {
+            if (string.IsNullOrEmpty(dni))
+                throw new Exception("No se especifico dni");
+
+            Paciente p = Repositorio.ObtenerPacienteDni(dni);
+            
+            return p;
+        }
+
+        public List<Paciente> ObtenerPacienteNombre(string nombre)
+        {
+            if (string.IsNullOrEmpty(nombre))
+                throw new Exception("No se especifico nombre");
+
+            string[] listaStringsNombre = nombre.Split(' ');
+
+            List<Paciente> p = Repositorio.ObtenerPacienteNombre(listaStringsNombre);
+
             return p;
         }
     }

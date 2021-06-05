@@ -31,6 +31,7 @@ namespace Pacientes.AbmPaciente
         {
             this.ListaPacientes = new System.Windows.Forms.DataGridView();
             this.Opciones = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ListaPacientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,12 +43,11 @@ namespace Pacientes.AbmPaciente
             this.ListaPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ListaPacientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Opciones});
-            this.ListaPacientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ListaPacientes.Location = new System.Drawing.Point(0, 0);
+            this.ListaPacientes.Location = new System.Drawing.Point(0, 83);
             this.ListaPacientes.Name = "ListaPacientes";
             this.ListaPacientes.ReadOnly = true;
             this.ListaPacientes.RowTemplate.Height = 25;
-            this.ListaPacientes.Size = new System.Drawing.Size(800, 450);
+            this.ListaPacientes.Size = new System.Drawing.Size(800, 367);
             this.ListaPacientes.TabIndex = 0;
             // 
             // Opciones
@@ -56,11 +56,22 @@ namespace Pacientes.AbmPaciente
             this.Opciones.Name = "Opciones";
             this.Opciones.ReadOnly = true;
             // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(13, 26);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(125, 36);
+            this.btnNuevo.TabIndex = 1;
+            this.btnNuevo.Text = "Registrar Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // VerPacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.ListaPacientes);
             this.Name = "VerPacientes";
             this.Text = "VerPacientes";
@@ -74,5 +85,6 @@ namespace Pacientes.AbmPaciente
 
         private System.Windows.Forms.DataGridView ListaPacientes;
         private System.Windows.Forms.DataGridViewButtonColumn Opciones;
+        private System.Windows.Forms.Button btnNuevo;
     }
 }

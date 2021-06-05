@@ -31,6 +31,7 @@ namespace Pacientes
         {
             this.btnAbmPacientes = new System.Windows.Forms.Button();
             this.lblTituloApp = new System.Windows.Forms.Label();
+            this.btnAgregarSesion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAbmPacientes
@@ -54,15 +55,27 @@ namespace Pacientes
             this.lblTituloApp.TabIndex = 1;
             this.lblTituloApp.Text = "Pacientes";
             // 
+            // btnAgregarSesion
+            // 
+            this.btnAgregarSesion.Location = new System.Drawing.Point(332, 168);
+            this.btnAgregarSesion.Name = "btnAgregarSesion";
+            this.btnAgregarSesion.Size = new System.Drawing.Size(137, 115);
+            this.btnAgregarSesion.TabIndex = 2;
+            this.btnAgregarSesion.Text = "Agregar Sesion";
+            this.btnAgregarSesion.UseVisualStyleBackColor = true;
+            this.btnAgregarSesion.Click += new System.EventHandler(this.btnAgregarSesion_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAgregarSesion);
             this.Controls.Add(this.lblTituloApp);
             this.Controls.Add(this.btnAbmPacientes);
             this.Name = "Principal";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -72,6 +85,7 @@ namespace Pacientes
 
         private System.Windows.Forms.Button btnAbmPacientes;
         private System.Windows.Forms.Label lblTituloApp;
+        private System.Windows.Forms.Button btnAgregarSesion;
     }
 }
 

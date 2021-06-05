@@ -13,6 +13,9 @@ namespace Pacientes.AbmPaciente
 {
     public partial class AgregarPaciente : Form
     {
+        public delegate void OnSaveHandler(object sender, Paciente e);
+        public event OnSaveHandler OnSave;
+
         public AgregarPaciente()
         {
             InitializeComponent();
@@ -37,7 +40,9 @@ namespace Pacientes.AbmPaciente
             try
             {
                 Logica l = new Logica();
-            l.GuardarPaciente(p);
+                var pDB = l.GuardarPaciente(p);
+                OnSave?.Invoke(this, pDB);
+
                 MessageBox.Show("Paciente agregado correctamente");
                 this.Close();
             }
