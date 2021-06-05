@@ -29,34 +29,49 @@ namespace Pacientes
         /// </summary>
         private void InitializeComponent()
         {
-            this.AbmPacientes = new System.Windows.Forms.Button();
+            this.btnAbmPacientes = new System.Windows.Forms.Button();
+            this.lblTituloApp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // AbmPacientes
+            // btnAbmPacientes
             // 
-            this.AbmPacientes.Location = new System.Drawing.Point(75, 40);
-            this.AbmPacientes.Name = "AbmPacientes";
-            this.AbmPacientes.Size = new System.Drawing.Size(75, 23);
-            this.AbmPacientes.TabIndex = 0;
-            this.AbmPacientes.Text = "Pacientes";
-            this.AbmPacientes.UseVisualStyleBackColor = true;
-            this.AbmPacientes.Click += new System.EventHandler(this.button1_Click);
+            this.btnAbmPacientes.Location = new System.Drawing.Point(75, 40);
+            this.btnAbmPacientes.Name = "btnAbmPacientes";
+            this.btnAbmPacientes.Size = new System.Drawing.Size(137, 115);
+            this.btnAbmPacientes.TabIndex = 0;
+            this.btnAbmPacientes.Text = "Pacientes";
+            this.btnAbmPacientes.UseVisualStyleBackColor = true;
+            this.btnAbmPacientes.Click += new System.EventHandler(this.btnAbmPaciente_Click);
+            // 
+            // lblTituloApp
+            // 
+            this.lblTituloApp.AutoSize = true;
+            this.lblTituloApp.Font = new System.Drawing.Font("OCR A Extended", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTituloApp.ForeColor = System.Drawing.Color.Blue;
+            this.lblTituloApp.Location = new System.Drawing.Point(315, 22);
+            this.lblTituloApp.Name = "lblTituloApp";
+            this.lblTituloApp.Size = new System.Drawing.Size(206, 37);
+            this.lblTituloApp.TabIndex = 1;
+            this.lblTituloApp.Text = "Pacientes";
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.AbmPacientes);
+            this.Controls.Add(this.lblTituloApp);
+            this.Controls.Add(this.btnAbmPacientes);
             this.Name = "Principal";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button AbmPacientes;
+        private System.Windows.Forms.Button btnAbmPacientes;
+        private System.Windows.Forms.Label lblTituloApp;
     }
 }
 
