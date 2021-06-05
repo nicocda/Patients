@@ -12,6 +12,7 @@ namespace Server
     {
         public int Id { get; set; }
         public DateTime FechaHora { get; set; }
+
         //public int PacienteId { get; set; }
 
         [MaxLength(4500)]

@@ -14,63 +14,51 @@ namespace Pacientes
 {
     public partial class AgregarSesion : Form
     {
-        int? IdPacienteSeleccionado;
         public AgregarSesion()
         {
             InitializeComponent();
+
+            var f = DateTime.Now;
+            int min;
+            if (f.Minute < 15)
+                min = 0;
+            else if (f.Minute < 30)
+                min = 15;
+            else if (f.Minute < 45)
+                min = 30;
+            else
+                min = 45;
+            dateFechaHora.Value = new DateTime(f.Year,f.Month,f.Day,f.Hour,min,0);
+
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            AgregarPaciente form = new AgregarPaciente();
-            form.OnSave += Form_OnSave;
-            form.ShowDialog();
+            if (!pacienteUserControl1.IdPacienteSeleccionado.HasValue)
+                MessageBox.Show("Indique el paciente");
 
-        }
+            string notas;
+            if (string.IsNullOrEmpty(txtNotas.Text))
+                notas = "[Sin Notas]";
 
-        private void Form_OnSave(object sender, Server.Paciente e)
-        {
-            SeleccionarPaciente(e);
-        }
+            Sesion s = new Sesion();
+            s.FechaHora = dateFechaHora.Value;
+            s.Notas = txtNotas.Text;
+            //s.PacienteId = IdPacienteSeleccionado.Value;
 
-        private void SeleccionarPaciente(Server.Paciente e)
-        {
-            txtDniPaciente.Text = e.DNI;
-            txtNombrePaciente.Text = e.NombreApellido;
-            IdPacienteSeleccionado = e.Id;
-        }
-
-        private void txtDniPaciente_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtDniPaciente.Text?.Trim()))
-                return;
-            Server.Logica logica = new Server.Logica();
-
-            var p = logica.ObtenerPacienteDni(txtDniPaciente.Text);
-
-            if (p != null)
-                SeleccionarPaciente(p);
-        }
-
-        private void txtNombrePaciente_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtNombrePaciente.Text?.Trim()))
-                return;
-            Server.Logica logica = new Server.Logica();
-
-           List<Paciente> pacientes = logica.ObtenerPacienteNombre(txtNombrePaciente.Text);
-            if(pacientes != null)
+            try
             {
-                if (pacientes.Count == 1)
-                    SeleccionarPaciente(pacientes[0]);
-                else if(pacientes.Count >1)
-                    AbrirBuscardorPacientes(pacientes);
-            }
-        }
+                Logica log = new Logica();
+                log.AgregarSesion(s, pacienteUserControl1.IdPacienteSeleccionado.Value);
+                this.Close();
 
-        private void AbrirBuscardorPacientes(List<Paciente> pacientes)
-        {
-            throw new NotImplementedException();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }

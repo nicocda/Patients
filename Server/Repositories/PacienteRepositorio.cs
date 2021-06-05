@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,8 @@ namespace Server.Repositories
 
         public Paciente ObtenerUno(int id)
         {
-            return Context.Pacientes.Where(x => x.Id == id).FirstOrDefault();
+            return Context.Pacientes.Include(x=>x.Sesiones)
+                .Where(x => x.Id == id).FirstOrDefault();
         }
 
         public void Guardar(Paciente p)
@@ -43,9 +45,14 @@ namespace Server.Repositories
             return Context.Pacientes.FirstOrDefault(x => x.DNI == dni);
         }
 
-        internal List<Paciente> ObtenerPacienteNombre(string[] nombres)
+        internal List<Paciente> ObtenerPacienteNombre(string nombre)
         {
-            return Context.Pacientes.Where(x => nombres.Any(c=>c.Contains(x.NombreApellido))).ToList();
+            //List<string> claves = nombre.ToLower().Trim().Split(' ').ToList();
+            //var query = Context.Pacientes
+            //   .Where(x => claves.All(c => x.NombreApellido.ToLower().Trim().Contains(c)));
+            string filter = nombre.ToLower().Trim();
+            return Context.Pacientes.Where(x=>x.NombreApellido.ToLower().Contains(filter)).ToList();
+
         }
     }
 }

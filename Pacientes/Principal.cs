@@ -34,5 +34,11 @@ namespace Pacientes
             AgregarSesion form = new AgregarSesion();
             form.Show();
         }
+
+        private void btnVerSesiones_Click(object sender, EventArgs e)
+        {
+            ListarSesiones form = new ListarSesiones();
+            form.Show();
+        }
     }
 }

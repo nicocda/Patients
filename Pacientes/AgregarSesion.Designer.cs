@@ -32,12 +32,10 @@ namespace Pacientes
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dateFechaHora = new System.Windows.Forms.DateTimePicker();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtNotas = new System.Windows.Forms.RichTextBox();
             this.lblNotas = new System.Windows.Forms.Label();
-            this.txtDniPaciente = new System.Windows.Forms.TextBox();
-            this.txtNombrePaciente = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.pacienteUserControl1 = new Pacientes.PacienteUserControl();
             this.SuspendLayout();
             // 
             // label1
@@ -60,18 +58,22 @@ namespace Pacientes
             // 
             // dateFechaHora
             // 
+            this.dateFechaHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateFechaHora.Location = new System.Drawing.Point(181, 25);
             this.dateFechaHora.Name = "dateFechaHora";
             this.dateFechaHora.Size = new System.Drawing.Size(200, 23);
-            this.dateFechaHora.TabIndex = 2;
+            this.dateFechaHora.TabIndex = 1;
             // 
-            // richTextBox1
+            // txtNotas
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(181, 84);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(507, 271);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.txtNotas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNotas.Location = new System.Drawing.Point(181, 84);
+            this.txtNotas.Name = "txtNotas";
+            this.txtNotas.Size = new System.Drawing.Size(507, 271);
+            this.txtNotas.TabIndex = 7;
+            this.txtNotas.Text = "";
             // 
             // lblNotas
             // 
@@ -82,59 +84,38 @@ namespace Pacientes
             this.lblNotas.TabIndex = 4;
             this.lblNotas.Text = "Notas";
             // 
-            // txtDniPaciente
+            // btnGuardar
             // 
-            this.txtDniPaciente.Location = new System.Drawing.Point(181, 55);
-            this.txtDniPaciente.Name = "txtDniPaciente";
-            this.txtDniPaciente.Size = new System.Drawing.Size(60, 23);
-            this.txtDniPaciente.TabIndex = 5;
-            this.txtDniPaciente.Leave += new System.EventHandler(this.txtDniPaciente_Leave);
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.Location = new System.Drawing.Point(599, 13);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(89, 65);
+            this.btnGuardar.TabIndex = 8;
+            this.btnGuardar.Text = "Agregar Sesion";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // txtNombrePaciente
+            // pacienteUserControl1
             // 
-            this.txtNombrePaciente.Location = new System.Drawing.Point(247, 55);
-            this.txtNombrePaciente.Name = "txtNombrePaciente";
-            this.txtNombrePaciente.Size = new System.Drawing.Size(141, 23);
-            this.txtNombrePaciente.TabIndex = 6;
-            this.txtNombrePaciente.Leave += new System.EventHandler(this.txtNombrePaciente_Leave);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Image = global::Pacientes.Properties.Resources.search;
-            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(395, 55);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(23, 23);
-            this.btnBuscar.TabIndex = 7;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // btnNew
-            // 
-            this.btnNew.Image = global::Pacientes.Properties.Resources.add;
-            this.btnNew.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnNew.Location = new System.Drawing.Point(424, 55);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(23, 23);
-            this.btnNew.TabIndex = 8;
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            this.pacienteUserControl1.Location = new System.Drawing.Point(181, 55);
+            this.pacienteUserControl1.Name = "pacienteUserControl1";
+            this.pacienteUserControl1.Size = new System.Drawing.Size(265, 24);
+            this.pacienteUserControl1.TabIndex = 2;
             // 
             // AgregarSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.txtNombrePaciente);
-            this.Controls.Add(this.txtDniPaciente);
+            this.ClientSize = new System.Drawing.Size(743, 400);
+            this.Controls.Add(this.pacienteUserControl1);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblNotas);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.txtNotas);
             this.Controls.Add(this.dateFechaHora);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AgregarSesion";
-            this.Text = "AgregarSesion";
+            this.Text = "Agregar Sesion";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,11 +126,9 @@ namespace Pacientes
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateFechaHora;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txtNotas;
         private System.Windows.Forms.Label lblNotas;
-        private System.Windows.Forms.TextBox txtDniPaciente;
-        private System.Windows.Forms.TextBox txtNombrePaciente;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnGuardar;
+        private PacienteUserControl pacienteUserControl1;
     }
 }

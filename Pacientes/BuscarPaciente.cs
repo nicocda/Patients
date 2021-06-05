@@ -35,6 +35,7 @@ namespace Pacientes
 
         private void CargarTabla(List<Paciente> data)
         {
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.DataSource = data;
             dataGridView1.Refresh();
         }

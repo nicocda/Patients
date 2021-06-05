@@ -34,7 +34,10 @@ namespace Server
         public List<Sesion> ListarSesiones(int pacienteId)
         {
             Paciente p = ObtenerPaciente(pacienteId);
-
+            //if(p.Sesiones == null)
+            //{
+            //   p.Sesiones = Repositorio.BuscarSesionesPaciente()
+            //}
             return p.Sesiones;
         }
         public void EliminarSesion(int sesionId, int pacienteId)
@@ -104,9 +107,9 @@ namespace Server
             if (string.IsNullOrEmpty(nombre))
                 throw new Exception("No se especifico nombre");
 
-            string[] listaStringsNombre = nombre.Split(' ');
+            //List<string> claves = nombre.ToLower().Trim().Split(' ').ToList();
 
-            List<Paciente> p = Repositorio.ObtenerPacienteNombre(listaStringsNombre);
+            List<Paciente> p = Repositorio.ObtenerPacienteNombre(nombre);
 
             return p;
         }
