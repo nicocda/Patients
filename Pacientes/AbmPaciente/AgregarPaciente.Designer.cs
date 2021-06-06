@@ -68,7 +68,7 @@ namespace Pacientes.AbmPaciente
             this.Documento.Location = new System.Drawing.Point(185, 75);
             this.Documento.Name = "Documento";
             this.Documento.Size = new System.Drawing.Size(200, 23);
-            this.Documento.TabIndex = 3;
+            this.Documento.TabIndex = 2;
             // 
             // label2
             // 
@@ -102,7 +102,7 @@ namespace Pacientes.AbmPaciente
             this.Telefono.Location = new System.Drawing.Point(185, 162);
             this.Telefono.Name = "Telefono";
             this.Telefono.Size = new System.Drawing.Size(200, 23);
-            this.Telefono.TabIndex = 9;
+            this.Telefono.TabIndex = 6;
             // 
             // label5
             // 
@@ -118,7 +118,7 @@ namespace Pacientes.AbmPaciente
             this.Direccion.Location = new System.Drawing.Point(185, 191);
             this.Direccion.Name = "Direccion";
             this.Direccion.Size = new System.Drawing.Size(200, 23);
-            this.Direccion.TabIndex = 11;
+            this.Direccion.TabIndex = 7;
             // 
             // label6
             // 
@@ -144,7 +144,7 @@ namespace Pacientes.AbmPaciente
             this.GenHombre.Location = new System.Drawing.Point(185, 137);
             this.GenHombre.Name = "GenHombre";
             this.GenHombre.Size = new System.Drawing.Size(69, 19);
-            this.GenHombre.TabIndex = 13;
+            this.GenHombre.TabIndex = 4;
             this.GenHombre.TabStop = true;
             this.GenHombre.Text = "Hombre";
             this.GenHombre.UseVisualStyleBackColor = true;
@@ -155,24 +155,25 @@ namespace Pacientes.AbmPaciente
             this.GenMujer.Location = new System.Drawing.Point(291, 137);
             this.GenMujer.Name = "GenMujer";
             this.GenMujer.Size = new System.Drawing.Size(56, 19);
-            this.GenMujer.TabIndex = 14;
+            this.GenMujer.TabIndex = 5;
             this.GenMujer.TabStop = true;
             this.GenMujer.Text = "Mujer";
             this.GenMujer.UseVisualStyleBackColor = true;
             // 
             // Nacimiento
             // 
+            this.Nacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Nacimiento.Location = new System.Drawing.Point(185, 105);
             this.Nacimiento.Name = "Nacimiento";
             this.Nacimiento.Size = new System.Drawing.Size(200, 23);
-            this.Nacimiento.TabIndex = 15;
+            this.Nacimiento.TabIndex = 3;
             // 
             // Observaciones
             // 
             this.Observaciones.Location = new System.Drawing.Point(185, 221);
             this.Observaciones.Name = "Observaciones";
             this.Observaciones.Size = new System.Drawing.Size(200, 96);
-            this.Observaciones.TabIndex = 16;
+            this.Observaciones.TabIndex = 8;
             this.Observaciones.Text = "";
             // 
             // Guardar

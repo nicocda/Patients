@@ -14,6 +14,10 @@ namespace Pacientes
 {
     public partial class PacienteUserControl : UserControl
     {
+
+        public delegate void OnSelectedHandler(object sender, Paciente e);
+        public event OnSelectedHandler OnSelected;
+
         public int? IdPacienteSeleccionado;
         public PacienteUserControl()
         {
@@ -39,6 +43,7 @@ namespace Pacientes
             txtDniPaciente.Text = e.DNI;
             txtNombrePaciente.Text = e.NombreApellido;
             IdPacienteSeleccionado = e.Id;
+            OnSelected?.Invoke(this, e);
         }
 
         private void txtDniPaciente_Leave(object sender, EventArgs e)

@@ -38,11 +38,14 @@ namespace Pacientes
             this.txtNota.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNota.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNota.Location = new System.Drawing.Point(0, 20);
             this.txtNota.Name = "txtNota";
+            this.txtNota.ReadOnly = true;
             this.txtNota.Size = new System.Drawing.Size(150, 43);
             this.txtNota.TabIndex = 0;
             this.txtNota.Text = "";
+            this.txtNota.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.txtNota_ContentsResized);
             // 
             // lblFecha
             // 

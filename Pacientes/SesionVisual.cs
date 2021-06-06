@@ -24,6 +24,9 @@ namespace Pacientes
         private void SetNota(string notas)
         {
             txtNota.Text = notas;
+            txtNota.WordWrap = true;
+            txtNota.ScrollBars = RichTextBoxScrollBars.None;
+
 
         }
 
@@ -32,6 +35,22 @@ namespace Pacientes
             string fechaStr = string.Concat(f.Day,"/",f.Month, "/",f.Year," ",f.Hour,":",f.Minute);
             lblFecha.Text = fechaStr;
 
+        }
+
+        internal void SetTamaño(int width)
+        {
+            this.Size = new Size(width+20, this.Size.Height);
+            txtNota.Size = new Size(width, txtNota.Size.Height);
+
+        }
+
+        private void txtNota_ContentsResized(object sender, ContentsResizedEventArgs e)
+        {
+            const int margin = 0;
+            RichTextBox rch = sender as RichTextBox;
+            rch.ClientSize = new Size(
+                e.NewRectangle.Width + margin,
+                e.NewRectangle.Height + margin);
         }
     }
 }

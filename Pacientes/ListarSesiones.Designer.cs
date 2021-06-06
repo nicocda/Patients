@@ -33,8 +33,6 @@ namespace Pacientes
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pacienteUserControl1
@@ -65,20 +63,15 @@ namespace Pacientes
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.vScrollBar1);
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(33, 92);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(507, 346);
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(214, 109);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 80);
-            this.vScrollBar1.TabIndex = 0;
-            this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar1_Scroll);
             // 
             // ListarSesiones
             // 
@@ -90,8 +83,7 @@ namespace Pacientes
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pacienteUserControl1);
             this.Name = "ListarSesiones";
-            this.Text = "ListarSesiones";
-            this.panel1.ResumeLayout(false);
+            this.Text = "Listado de Sesiones de un Paciente";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,6 +95,5 @@ namespace Pacientes
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }
