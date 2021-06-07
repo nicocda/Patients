@@ -54,6 +54,11 @@ namespace Server
             Repositorio.Guardar(p);
         }
 
+        public void EliminarPaciente(Paciente p)
+        {
+            Repositorio.EliminarPaciente(p);
+        }
+
         public Paciente GuardarPaciente(Paciente p)
         {
             if (p == null)

@@ -1,7 +1,7 @@
 ﻿
 namespace Pacientes.AbmPaciente
 {
-    partial class AgregarPaciente
+    partial class EditarPaciente
     {
         /// <summary>
         /// Required designer variable.

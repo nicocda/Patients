@@ -54,5 +54,11 @@ namespace Server.Repositories
             return Context.Pacientes.Where(x=>x.NombreApellido.ToLower().Contains(filter)).ToList();
 
         }
+
+        internal void EliminarPaciente(Paciente p)
+        {
+            Context.Remove(p);
+            Context.SaveChanges();
+        }
     }
 }

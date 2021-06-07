@@ -86,7 +86,8 @@ namespace Pacientes
             this.Controls.Add(this.lblTituloApp);
             this.Controls.Add(this.btnAbmPacientes);
             this.Name = "Principal";
-            this.Text = "Form1";
+            this.Text = "Pacientes";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Principal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
