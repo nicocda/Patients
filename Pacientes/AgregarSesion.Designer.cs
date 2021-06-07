@@ -29,6 +29,8 @@ namespace Pacientes
         /// </summary>
         private void InitializeComponent()
         {
+            Server.Paciente paciente1 = new Server.Paciente();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarSesion));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dateFechaHora = new System.Windows.Forms.DateTimePicker();
@@ -101,6 +103,16 @@ namespace Pacientes
             this.pacienteUserControl1.Name = "pacienteUserControl1";
             this.pacienteUserControl1.Size = new System.Drawing.Size(265, 24);
             this.pacienteUserControl1.TabIndex = 2;
+            paciente1.DiaNacimiento = null;
+            paciente1.Direccion = null;
+            paciente1.DNI = "";
+            paciente1.Genero = null;
+            paciente1.Id = 0;
+            paciente1.NombreApellido = "";
+            paciente1.NroTelefono = null;
+            paciente1.Observaciones = null;
+            paciente1.Sesiones = null;
+            this.pacienteUserControl1.Value = paciente1;
             // 
             // AgregarSesion
             // 
@@ -114,6 +126,7 @@ namespace Pacientes
             this.Controls.Add(this.dateFechaHora);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AgregarSesion";
             this.Text = "Agregar Sesion";
             this.ResumeLayout(false);

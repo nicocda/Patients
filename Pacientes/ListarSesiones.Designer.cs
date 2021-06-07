@@ -29,6 +29,8 @@ namespace Pacientes
         /// </summary>
         private void InitializeComponent()
         {
+            Server.Paciente paciente1 = new Server.Paciente();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListarSesiones));
             this.pacienteUserControl1 = new Pacientes.PacienteUserControl();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -41,6 +43,16 @@ namespace Pacientes
             this.pacienteUserControl1.Name = "pacienteUserControl1";
             this.pacienteUserControl1.Size = new System.Drawing.Size(265, 24);
             this.pacienteUserControl1.TabIndex = 0;
+            paciente1.DiaNacimiento = null;
+            paciente1.Direccion = null;
+            paciente1.DNI = "";
+            paciente1.Genero = null;
+            paciente1.Id = 0;
+            paciente1.NombreApellido = "";
+            paciente1.NroTelefono = null;
+            paciente1.Observaciones = null;
+            paciente1.Sesiones = null;
+            this.pacienteUserControl1.Value = paciente1;
             // 
             // label1
             // 
@@ -82,6 +94,7 @@ namespace Pacientes
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pacienteUserControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListarSesiones";
             this.Text = "Listado de Sesiones de un Paciente";
             this.ResumeLayout(false);

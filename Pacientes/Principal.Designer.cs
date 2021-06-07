@@ -29,8 +29,8 @@ namespace Pacientes
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.btnAbmPacientes = new System.Windows.Forms.Button();
-            this.lblTituloApp = new System.Windows.Forms.Label();
             this.btnAgregarSesion = new System.Windows.Forms.Button();
             this.btnVerSesiones = new System.Windows.Forms.Button();
             this.SesionesDia = new System.Windows.Forms.Button();
@@ -38,51 +38,44 @@ namespace Pacientes
             // 
             // btnAbmPacientes
             // 
-            this.btnAbmPacientes.Location = new System.Drawing.Point(75, 40);
+            this.btnAbmPacientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbmPacientes.Location = new System.Drawing.Point(651, 492);
             this.btnAbmPacientes.Name = "btnAbmPacientes";
             this.btnAbmPacientes.Size = new System.Drawing.Size(137, 115);
-            this.btnAbmPacientes.TabIndex = 0;
+            this.btnAbmPacientes.TabIndex = 4;
             this.btnAbmPacientes.Text = "Pacientes";
             this.btnAbmPacientes.UseVisualStyleBackColor = true;
             this.btnAbmPacientes.Click += new System.EventHandler(this.btnAbmPaciente_Click);
             // 
-            // lblTituloApp
-            // 
-            this.lblTituloApp.AutoSize = true;
-            this.lblTituloApp.Font = new System.Drawing.Font("OCR A Extended", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTituloApp.ForeColor = System.Drawing.Color.Blue;
-            this.lblTituloApp.Location = new System.Drawing.Point(315, 22);
-            this.lblTituloApp.Name = "lblTituloApp";
-            this.lblTituloApp.Size = new System.Drawing.Size(206, 37);
-            this.lblTituloApp.TabIndex = 1;
-            this.lblTituloApp.Text = "Pacientes";
-            // 
             // btnAgregarSesion
             // 
-            this.btnAgregarSesion.Location = new System.Drawing.Point(75, 161);
+            this.btnAgregarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarSesion.Location = new System.Drawing.Point(508, 492);
             this.btnAgregarSesion.Name = "btnAgregarSesion";
             this.btnAgregarSesion.Size = new System.Drawing.Size(137, 115);
-            this.btnAgregarSesion.TabIndex = 2;
+            this.btnAgregarSesion.TabIndex = 3;
             this.btnAgregarSesion.Text = "Agregar Sesion";
             this.btnAgregarSesion.UseVisualStyleBackColor = true;
             this.btnAgregarSesion.Click += new System.EventHandler(this.btnAgregarSesion_Click);
             // 
             // btnVerSesiones
             // 
-            this.btnVerSesiones.Location = new System.Drawing.Point(75, 282);
+            this.btnVerSesiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVerSesiones.Location = new System.Drawing.Point(365, 492);
             this.btnVerSesiones.Name = "btnVerSesiones";
             this.btnVerSesiones.Size = new System.Drawing.Size(137, 115);
-            this.btnVerSesiones.TabIndex = 3;
+            this.btnVerSesiones.TabIndex = 2;
             this.btnVerSesiones.Text = "Ver sesiones";
             this.btnVerSesiones.UseVisualStyleBackColor = true;
             this.btnVerSesiones.Click += new System.EventHandler(this.btnVerSesiones_Click);
             // 
             // SesionesDia
             // 
-            this.SesionesDia.Location = new System.Drawing.Point(75, 403);
+            this.SesionesDia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SesionesDia.Location = new System.Drawing.Point(222, 492);
             this.SesionesDia.Name = "SesionesDia";
             this.SesionesDia.Size = new System.Drawing.Size(137, 115);
-            this.SesionesDia.TabIndex = 4;
+            this.SesionesDia.TabIndex = 1;
             this.SesionesDia.Text = "Ver sesiones del día";
             this.SesionesDia.UseVisualStyleBackColor = true;
             this.SesionesDia.Click += new System.EventHandler(this.SesionesDia_Click);
@@ -91,25 +84,25 @@ namespace Pacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 619);
             this.Controls.Add(this.SesionesDia);
             this.Controls.Add(this.btnVerSesiones);
             this.Controls.Add(this.btnAgregarSesion);
-            this.Controls.Add(this.lblTituloApp);
             this.Controls.Add(this.btnAbmPacientes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
             this.Text = "Pacientes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Principal_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnAbmPacientes;
-        private System.Windows.Forms.Label lblTituloApp;
         private System.Windows.Forms.Button btnAgregarSesion;
         private System.Windows.Forms.Button btnVerSesiones;
         private System.Windows.Forms.Button SesionesDia;

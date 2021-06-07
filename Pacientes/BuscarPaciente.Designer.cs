@@ -29,6 +29,7 @@ namespace Pacientes
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuscarPaciente));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -123,8 +124,9 @@ namespace Pacientes
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BuscarPaciente";
-            this.Text = "BuscarPaciente";
+            this.Text = "Buscar Paciente";
             this.Load += new System.EventHandler(this.BuscarPaciente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
