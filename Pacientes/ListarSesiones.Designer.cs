@@ -97,7 +97,6 @@ namespace Pacientes
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListarSesiones";
             this.Text = "Listado de Sesiones de un Paciente";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 
