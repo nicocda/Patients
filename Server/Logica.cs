@@ -26,6 +26,11 @@ namespace Server
             Repositorio.Guardar(p);
         }
 
+        public List<Sesion> ObtenerSesionesDia(DateTime dia)
+        {
+            return Repositorio.BuscarSesionesDia(dia);
+        }
+
         public List<Paciente> ObtenerPacientes()
         {
             return Repositorio.ObtenerTodos();

@@ -33,6 +33,7 @@ namespace Pacientes
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtNombrePaciente = new System.Windows.Forms.TextBox();
             this.txtDniPaciente = new System.Windows.Forms.TextBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNew
@@ -73,16 +74,28 @@ namespace Pacientes
             this.txtDniPaciente.TabIndex = 7;
             this.txtDniPaciente.Leave += new System.EventHandler(this.txtDniPaciente_Leave);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Image = global::Pacientes.Properties.Resources.delete;
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnEliminar.Location = new System.Drawing.Point(272, 1);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(23, 23);
+            this.btnEliminar.TabIndex = 11;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // PacienteUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtNombrePaciente);
             this.Controls.Add(this.txtDniPaciente);
             this.Name = "PacienteUserControl";
-            this.Size = new System.Drawing.Size(265, 24);
+            this.Size = new System.Drawing.Size(313, 24);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,5 +107,6 @@ namespace Pacientes
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtNombrePaciente;
         private System.Windows.Forms.TextBox txtDniPaciente;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

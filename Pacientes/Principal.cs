@@ -40,5 +40,11 @@ namespace Pacientes
             ListarSesiones form = new ListarSesiones();
             form.Show();
         }
+
+        private void SesionesDia_Click(object sender, EventArgs e)
+        {
+            VerSesionesDia form = new VerSesionesDia();
+            form.Show();
+        }
     }
 }

@@ -16,8 +16,7 @@ namespace Pacientes
         public SesionVisual(Sesion s)
         {
             InitializeComponent();
-            SetFecha(s.FechaHora);
-
+            lblFecha.Text = s.GetFechaStr();
             SetNota(s.Notas);
         }
 
@@ -30,13 +29,7 @@ namespace Pacientes
 
         }
 
-        private void SetFecha(DateTime f)
-        {
-            string fechaStr = string.Concat(f.Day,"/",f.Month, "/",f.Year," ",f.Hour,":",f.Minute);
-            lblFecha.Text = fechaStr;
-
-        }
-
+     
         internal void SetTamaño(int width)
         {
             this.Size = new Size(width+20, this.Size.Height);

@@ -33,6 +33,7 @@ namespace Pacientes
             this.lblTituloApp = new System.Windows.Forms.Label();
             this.btnAgregarSesion = new System.Windows.Forms.Button();
             this.btnVerSesiones = new System.Windows.Forms.Button();
+            this.SesionesDia = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAbmPacientes
@@ -58,7 +59,7 @@ namespace Pacientes
             // 
             // btnAgregarSesion
             // 
-            this.btnAgregarSesion.Location = new System.Drawing.Point(332, 168);
+            this.btnAgregarSesion.Location = new System.Drawing.Point(75, 161);
             this.btnAgregarSesion.Name = "btnAgregarSesion";
             this.btnAgregarSesion.Size = new System.Drawing.Size(137, 115);
             this.btnAgregarSesion.TabIndex = 2;
@@ -68,7 +69,7 @@ namespace Pacientes
             // 
             // btnVerSesiones
             // 
-            this.btnVerSesiones.Location = new System.Drawing.Point(582, 76);
+            this.btnVerSesiones.Location = new System.Drawing.Point(75, 282);
             this.btnVerSesiones.Name = "btnVerSesiones";
             this.btnVerSesiones.Size = new System.Drawing.Size(137, 115);
             this.btnVerSesiones.TabIndex = 3;
@@ -76,11 +77,22 @@ namespace Pacientes
             this.btnVerSesiones.UseVisualStyleBackColor = true;
             this.btnVerSesiones.Click += new System.EventHandler(this.btnVerSesiones_Click);
             // 
+            // SesionesDia
+            // 
+            this.SesionesDia.Location = new System.Drawing.Point(75, 403);
+            this.SesionesDia.Name = "SesionesDia";
+            this.SesionesDia.Size = new System.Drawing.Size(137, 115);
+            this.SesionesDia.TabIndex = 4;
+            this.SesionesDia.Text = "Ver sesiones del día";
+            this.SesionesDia.UseVisualStyleBackColor = true;
+            this.SesionesDia.Click += new System.EventHandler(this.SesionesDia_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 619);
+            this.Controls.Add(this.SesionesDia);
             this.Controls.Add(this.btnVerSesiones);
             this.Controls.Add(this.btnAgregarSesion);
             this.Controls.Add(this.lblTituloApp);
@@ -100,6 +112,7 @@ namespace Pacientes
         private System.Windows.Forms.Label lblTituloApp;
         private System.Windows.Forms.Button btnAgregarSesion;
         private System.Windows.Forms.Button btnVerSesiones;
+        private System.Windows.Forms.Button SesionesDia;
     }
 }
 

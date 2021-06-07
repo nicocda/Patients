@@ -14,10 +14,32 @@ namespace Pacientes
 {
     public partial class AgregarSesion : Form
     {
+        private Sesion sesion;
+
         public AgregarSesion()
         {
             InitializeComponent();
 
+            Inicializar();
+
+        }
+
+        public AgregarSesion(Sesion sesion)
+        {
+
+            InitializeComponent();
+
+            this.sesion = sesion;
+            txtNotas.Text = sesion.Notas;
+            dateFechaHora.Value = sesion.FechaHora;
+            pacienteUserControl1.Value = sesion.Paciente;
+
+
+            btnGuardar.Visible = false;
+        }
+
+        private void Inicializar()
+        {
             var f = DateTime.Now;
             int min;
             if (f.Minute < 15)
@@ -28,10 +50,10 @@ namespace Pacientes
                 min = 30;
             else
                 min = 45;
-            dateFechaHora.Value = new DateTime(f.Year,f.Month,f.Day,f.Hour,min,0);
-
+            dateFechaHora.Value = new DateTime(f.Year, f.Month, f.Day, f.Hour, min, 0);
+            pacienteUserControl1.LimpiarCampos();
+            txtNotas.Text = null;
         }
-
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -51,8 +73,9 @@ namespace Pacientes
             {
                 Logica log = new Logica();
                 log.AgregarSesion(s, pacienteUserControl1.IdPacienteSeleccionado.Value);
-                this.Close();
 
+
+                Inicializar();
             }
             catch (Exception ex)
             {

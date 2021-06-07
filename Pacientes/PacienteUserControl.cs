@@ -19,6 +19,21 @@ namespace Pacientes
         public event OnSelectedHandler OnSelected;
 
         public int? IdPacienteSeleccionado;
+
+        public Paciente Value
+        {
+            get
+            {
+                return new Paciente() { Id = IdPacienteSeleccionado ?? 0, DNI = txtDniPaciente.Text, NombreApellido = txtNombrePaciente.Text };
+            }
+            set
+            {
+                IdPacienteSeleccionado = value.Id;
+                txtDniPaciente.Text = value.DNI;
+                txtNombrePaciente.Text = value.NombreApellido;
+            }
+        }
+
         public PacienteUserControl()
         {
             InitializeComponent();
@@ -93,6 +108,18 @@ namespace Pacientes
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             AbrirBuscardorPacientes(null);
+        }
+
+        public void LimpiarCampos()
+        {
+            IdPacienteSeleccionado = null;
+            txtDniPaciente.Text = null;
+            txtNombrePaciente.Text = null;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
         }
     }
 }

@@ -34,6 +34,12 @@ namespace Server.Repositories
             Context.SaveChanges();
         }
 
+        internal List<Sesion> BuscarSesionesDia(DateTime dia)
+        {
+            DateTime finDia = dia.AddDays(1);
+            return Context.Sesiones.Include(x=>x.Paciente).Where(x => x.FechaHora > dia && x.FechaHora < finDia).OrderBy(x => x.FechaHora).ToList();
+        }
+
         internal Paciente ObtenerPorNombreyDni(string nombreApellido, string dni)
         {
             return Context.Pacientes.FirstOrDefault(x => x.NombreApellido == nombreApellido && x.DNI == dni);
