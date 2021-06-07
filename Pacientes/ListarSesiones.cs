@@ -13,10 +13,12 @@ namespace Pacientes
 {
     public partial class ListarSesiones : Form
     {
+        private bool FirstTime = true;
         public ListarSesiones()
         {
             InitializeComponent();
             pacienteUserControl1.OnSelected += PacienteUserControl1_OnSelected;
+            this.SizeChanged += ListarSesiones_ResizeEnd;
         }
 
         private void PacienteUserControl1_OnSelected(object sender, Paciente e)
@@ -45,6 +47,9 @@ namespace Pacientes
                 {
                     SesionVisual control = new SesionVisual(s);
                     control.Location = new Point(x, y);
+                    control.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
+          | AnchorStyles.Left)
+          | AnchorStyles.Right);
                     y = y + control.Size.Height + 10;
                     int width = panel1.Size.Width - 40;
                     control.SetTamaño(width);
@@ -58,9 +63,12 @@ namespace Pacientes
 
         }
 
-        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
 
+        private void ListarSesiones_ResizeEnd(object sender, EventArgs e)
+        {
+            if (!FirstTime)
+                Buscar();
+            FirstTime = false;
         }
     }
 }

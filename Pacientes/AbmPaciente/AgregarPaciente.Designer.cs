@@ -29,6 +29,7 @@ namespace Pacientes.AbmPaciente
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarPaciente));
             this.label1 = new System.Windows.Forms.Label();
             this.NombreApellido = new System.Windows.Forms.TextBox();
             this.Documento = new System.Windows.Forms.TextBox();
@@ -207,6 +208,7 @@ namespace Pacientes.AbmPaciente
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NombreApellido);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AgregarPaciente";
             this.Text = "Nuevo Paciente";
             this.ResumeLayout(false);

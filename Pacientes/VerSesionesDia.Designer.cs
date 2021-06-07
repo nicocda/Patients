@@ -29,6 +29,7 @@ namespace Pacientes
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerSesionesDia));
             this.label1 = new System.Windows.Forms.Label();
             this.fecha = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,6 +71,7 @@ namespace Pacientes
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerSesionesDia";
             this.Text = "Sesiones Dia";
             this.ResumeLayout(false);

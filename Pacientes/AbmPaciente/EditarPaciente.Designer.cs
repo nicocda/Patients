@@ -29,6 +29,7 @@ namespace Pacientes.AbmPaciente
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditarPaciente));
             this.label1 = new System.Windows.Forms.Label();
             this.NombreApellido = new System.Windows.Forms.TextBox();
             this.Documento = new System.Windows.Forms.TextBox();
@@ -186,7 +187,7 @@ namespace Pacientes.AbmPaciente
             this.Guardar.UseVisualStyleBackColor = true;
             this.Guardar.Click += new System.EventHandler(this.Guardar_Click);
             // 
-            // AgregarPaciente
+            // EditarPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -207,8 +208,9 @@ namespace Pacientes.AbmPaciente
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NombreApellido);
             this.Controls.Add(this.label1);
-            this.Name = "AgregarPaciente";
-            this.Text = "Nuevo Paciente";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "EditarPaciente";
+            this.Text = "Editar Paciente";
             this.ResumeLayout(false);
             this.PerformLayout();
 

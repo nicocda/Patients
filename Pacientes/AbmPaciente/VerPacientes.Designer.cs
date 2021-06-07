@@ -29,6 +29,7 @@ namespace Pacientes.AbmPaciente
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerPacientes));
             this.ListaPacientes = new System.Windows.Forms.DataGridView();
             this.Opciones = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -100,8 +101,9 @@ namespace Pacientes.AbmPaciente
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.ListaPacientes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerPacientes";
-            this.Text = "VerPacientes";
+            this.Text = "Pacientes";
             this.Load += new System.EventHandler(this.VerPacientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ListaPacientes)).EndInit();
             this.ResumeLayout(false);
