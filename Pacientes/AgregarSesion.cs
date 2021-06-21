@@ -57,7 +57,7 @@ namespace Pacientes
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!pacienteUserControl1.IdPacienteSeleccionado.HasValue)
+            if (!pacienteUserControl1.TieneValor())
                 MessageBox.Show("Indique el paciente");
 
             string notas;

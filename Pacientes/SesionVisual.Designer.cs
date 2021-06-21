@@ -49,11 +49,11 @@ namespace Pacientes
             // 
             // lblFecha
             // 
-            this.lblFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(55, 2);
+            this.lblFecha.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblFecha.Location = new System.Drawing.Point(0, 2);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(95, 15);
+            this.lblFecha.Size = new System.Drawing.Size(111, 15);
             this.lblFecha.TabIndex = 1;
             this.lblFecha.Text = "99/99/9999 99:99";
             // 

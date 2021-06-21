@@ -19,6 +19,19 @@ namespace Pacientes
             InitializeComponent();
             pacienteUserControl1.OnSelected += PacienteUserControl1_OnSelected;
             this.SizeChanged += ListarSesiones_ResizeEnd;
+
+            panel1.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
+          | AnchorStyles.Left)
+          | AnchorStyles.Right);
+            AgregarScroll();
+        }
+
+        private void AgregarScroll()
+        {
+            ScrollBar vScrollBar1 = new VScrollBar();
+            vScrollBar1.Dock = DockStyle.Left;
+            vScrollBar1.Scroll += (sender, e) => { panel1.VerticalScroll.Value = vScrollBar1.Value; };
+            panel1.Controls.Add(vScrollBar1);
         }
 
         private void PacienteUserControl1_OnSelected(object sender, Paciente e)
@@ -34,14 +47,16 @@ namespace Pacientes
         private void Buscar()
         {
             panel1.Controls.Clear();
-            if (!pacienteUserControl1.IdPacienteSeleccionado.HasValue)
+            AgregarScroll();
+            if (!pacienteUserControl1.TieneValor())
                 return;
+
             Logica logica = new Logica();
             var sesiones = logica.ListarSesiones(pacienteUserControl1.IdPacienteSeleccionado.Value);
             if (sesiones != null && sesiones.Count > 0)
             {
                 sesiones = sesiones.OrderByDescending(c => c.FechaHora).ToList();
-                int x = 10;
+                int x = 30;
                 int y = 10;
                 foreach (var s in sesiones)
                 {
@@ -70,5 +85,28 @@ namespace Pacientes
                 Buscar();
             FirstTime = false;
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (!pacienteUserControl1.TieneValor())
+                return;
+
+            Sesion s = new Sesion();
+            s.FechaHora = DateTime.Today;
+            s.Notas = txtNuevoDetalle.Text;
+            //s.PacienteId = IdPacienteSeleccionado.Value;
+
+            try
+            {
+                Logica log = new Logica();
+                log.AgregarSesion(s, pacienteUserControl1.IdPacienteSeleccionado.Value);
+                Buscar();
+            }
+            catch(Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            }
     }
 }

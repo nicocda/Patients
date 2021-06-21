@@ -18,13 +18,15 @@ namespace Pacientes
         public delegate void OnSelectedHandler(object sender, Paciente e);
         public event OnSelectedHandler OnSelected;
 
-        public int? IdPacienteSeleccionado;
+        public int? IdPacienteSeleccionado = null;
 
         public Paciente Value
         {
             get
             {
-                return new Paciente() { Id = IdPacienteSeleccionado ?? 0, DNI = txtDniPaciente.Text, NombreApellido = txtNombrePaciente.Text };
+                if (IdPacienteSeleccionado.HasValue)
+                    return new Paciente() { Id = IdPacienteSeleccionado.Value, DNI = txtDniPaciente.Text, NombreApellido = txtNombrePaciente.Text };
+                else return null;
             }
             set
             {
@@ -34,9 +36,18 @@ namespace Pacientes
             }
         }
 
+
+        public bool TieneValor()
+        {
+            if (IdPacienteSeleccionado == null || IdPacienteSeleccionado == 0)
+                return false;
+            else return true;
+        }
+
         public PacienteUserControl()
         {
             InitializeComponent();
+            LimpiarCampos();
         }
 
 

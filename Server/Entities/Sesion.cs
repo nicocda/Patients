@@ -25,7 +25,7 @@ namespace Server
             if (soloTime)
                 return string.Concat(f.Hour.ToString().PadLeft(2, '0'), ":", f.Minute.ToString().PadLeft(2, '0'));
             else
-                return string.Concat(f.Day.ToString().PadLeft(2, '0'), "/", f.Month.ToString().PadLeft(2, '0'), "/", f.Year.ToString().PadLeft(4, '0'), " ", f.Hour.ToString().PadLeft(2, '0'), ":", f.Minute.ToString().PadLeft(2, '0'));
+                return string.Concat(f.Day.ToString().PadLeft(2, '0'), "/", f.Month.ToString().PadLeft(2, '0'), "/", f.Year.ToString().PadLeft(4, '0'));
 
         }
     }

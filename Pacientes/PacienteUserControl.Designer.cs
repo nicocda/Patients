@@ -40,7 +40,7 @@ namespace Pacientes
             // 
             this.btnNew.Image = global::Pacientes.Properties.Resources.add;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnNew.Location = new System.Drawing.Point(243, 0);
+            this.btnNew.Location = new System.Drawing.Point(177, 0);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(23, 23);
             this.btnNew.TabIndex = 10;
@@ -51,7 +51,7 @@ namespace Pacientes
             // 
             this.btnBuscar.Image = global::Pacientes.Properties.Resources.search;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(214, 0);
+            this.btnBuscar.Location = new System.Drawing.Point(148, 0);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(23, 23);
             this.btnBuscar.TabIndex = 9;
@@ -60,7 +60,7 @@ namespace Pacientes
             // 
             // txtNombrePaciente
             // 
-            this.txtNombrePaciente.Location = new System.Drawing.Point(66, 0);
+            this.txtNombrePaciente.Location = new System.Drawing.Point(0, 0);
             this.txtNombrePaciente.Name = "txtNombrePaciente";
             this.txtNombrePaciente.Size = new System.Drawing.Size(141, 23);
             this.txtNombrePaciente.TabIndex = 8;
@@ -72,13 +72,14 @@ namespace Pacientes
             this.txtDniPaciente.Name = "txtDniPaciente";
             this.txtDniPaciente.Size = new System.Drawing.Size(60, 23);
             this.txtDniPaciente.TabIndex = 7;
+            this.txtDniPaciente.Visible = false;
             this.txtDniPaciente.Leave += new System.EventHandler(this.txtDniPaciente_Leave);
             // 
             // btnEliminar
             // 
             this.btnEliminar.Image = global::Pacientes.Properties.Resources.delete;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(272, 1);
+            this.btnEliminar.Location = new System.Drawing.Point(206, 1);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(23, 23);
             this.btnEliminar.TabIndex = 11;
@@ -95,7 +96,7 @@ namespace Pacientes
             this.Controls.Add(this.txtNombrePaciente);
             this.Controls.Add(this.txtDniPaciente);
             this.Name = "PacienteUserControl";
-            this.Size = new System.Drawing.Size(313, 24);
+            this.Size = new System.Drawing.Size(234, 24);
             this.ResumeLayout(false);
             this.PerformLayout();
 
