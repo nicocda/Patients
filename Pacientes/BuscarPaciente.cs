@@ -21,7 +21,7 @@ namespace Pacientes
         {
             InitializeComponent();
 
-            Logica log = new Logica();
+            Logica log = new Logica(Properties.Settings.Default.databaseName);
             var data = log.ObtenerPacientes();
             CargarTabla(data);
         }
@@ -47,7 +47,7 @@ namespace Pacientes
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             List<Paciente> data = new List<Paciente>();
-            Logica log = new Logica();
+            Logica log = new Logica(Properties.Settings.Default.databaseName);
             if (!string.IsNullOrEmpty(txtDni.Text))
             {
                 var p = log.ObtenerPacienteDni(txtDni.Text);

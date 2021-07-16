@@ -39,7 +39,7 @@ namespace Pacientes.AbmPaciente
             p.Sesiones = new List<Sesion>();
             try
             {
-                Logica l = new Logica();
+                Logica l = new Logica(Properties.Settings.Default.databaseName);
                 var pDB = l.GuardarPaciente(p);
                 OnSave?.Invoke(this, pDB);
 

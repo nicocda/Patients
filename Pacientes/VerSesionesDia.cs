@@ -34,7 +34,7 @@ namespace Pacientes
         {
             panel1.Controls.Clear();
 
-            Logica logica = new Logica();
+            Logica logica = new Logica(Properties.Settings.Default.databaseName);
             List<Sesion> sesiones = logica.ObtenerSesionesDia(fecha.Value);
 
             if (sesiones != null && sesiones.Count > 0)

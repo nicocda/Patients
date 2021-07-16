@@ -10,6 +10,15 @@ namespace Server
 {
     public class DatabaseContext : DbContext
     {
+        string ConnectionString = "dbPacientes.db";
+        public DatabaseContext()
+        {
+
+        }
+        public DatabaseContext(string connectionString)
+        {
+            ConnectionString = connectionString;
+        }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Sesion> Sesiones{ get; set; }
 
@@ -22,7 +31,7 @@ namespace Server
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(connectionString: "FileName=dbPacientes.db", 
+            optionsBuilder.UseSqlite(connectionString: @"FileName="+ ConnectionString, 
                 sqliteOptionsAction: op =>
                 {
                     op.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);

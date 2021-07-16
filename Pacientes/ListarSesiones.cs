@@ -24,14 +24,37 @@ namespace Pacientes
           | AnchorStyles.Left)
           | AnchorStyles.Right);
             AgregarScroll();
+
         }
+
 
         private void AgregarScroll()
         {
-            ScrollBar vScrollBar1 = new VScrollBar();
-            vScrollBar1.Dock = DockStyle.Left;
-            vScrollBar1.Scroll += (sender, e) => { panel1.VerticalScroll.Value = vScrollBar1.Value; };
-            panel1.Controls.Add(vScrollBar1);
+            panel1.AutoScroll = true;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+
+
+            panel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            panel1.WrapContents = false;
+           // panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.AutoScroll = true;
+
+            //panel.AutoScroll = true;
+            //panel1.AutoScroll = false;
+            //panel1.HorizontalScroll.Enabled = false;
+            //panel1.HorizontalScroll.Visible = false;
+            //panel1.HorizontalScroll.Maximum = 0;
+            //panel1.AutoScroll = true;
+
+
+            //ScrollBar vScrollBar1 = new VScrollBar();
+
+            //vScrollBar1.Dock = DockStyle.Left;
+            //vScrollBar1.Scroll += (sender, e) =>
+            //{
+            //    panel1.VerticalScroll.Value = vScrollBar1.Value;
+            //};
+            //panel1.Controls.Add(vScrollBar1);
         }
 
         private void PacienteUserControl1_OnSelected(object sender, Paciente e)
@@ -46,12 +69,18 @@ namespace Pacientes
 
         private void Buscar()
         {
-            panel1.Controls.Clear();
-            AgregarScroll();
+            //panel1.Controls.Clear();
+            //AgregarScroll();
+            //Remove only SesionVisual Controls
+            foreach (Control item in panel1.Controls.OfType<SesionVisual>())
+            {
+                panel1.Controls.Remove(item);
+            }
+
             if (!pacienteUserControl1.TieneValor())
                 return;
 
-            Logica logica = new Logica();
+            Logica logica = new Logica(Properties.Settings.Default.databaseName);
             var sesiones = logica.ListarSesiones(pacienteUserControl1.IdPacienteSeleccionado.Value);
             if (sesiones != null && sesiones.Count > 0)
             {
@@ -61,24 +90,20 @@ namespace Pacientes
                 foreach (var s in sesiones)
                 {
                     SesionVisual control = new SesionVisual(s);
-                    control.Location = new Point(x, y);
-                    control.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
-          | AnchorStyles.Left)
-          | AnchorStyles.Right);
+                 //   control.Location = new Point(x, y);
+          //          control.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
+          //| AnchorStyles.Left)
+          //| AnchorStyles.Right);
                     y = y + control.Size.Height + 10;
-                    int width = panel1.Size.Width - 40;
+                    int width = panel1.Size.Width - 140;
                     control.SetTamaño(width);
                     panel1.Controls.Add(control);
+
                 }
+                   // panel1.Size = new Size( panel1.Size.Width, y);
             }
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
+        
         private void ListarSesiones_ResizeEnd(object sender, EventArgs e)
         {
             if (!FirstTime)
@@ -98,7 +123,7 @@ namespace Pacientes
 
             try
             {
-                Logica log = new Logica();
+                Logica log = new Logica(Properties.Settings.Default.databaseName);
                 log.AgregarSesion(s, pacienteUserControl1.IdPacienteSeleccionado.Value);
                 Buscar();
             }
@@ -108,5 +133,19 @@ namespace Pacientes
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Name == "Principal")
+                    return;
+            }
+                Principal frm = new Principal();
+                frm.WindowState = FormWindowState.Maximized;
+                frm.Show();
+            
+        }
     }
 }

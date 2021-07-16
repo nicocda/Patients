@@ -64,6 +64,7 @@ namespace Pacientes
             this.txtNombrePaciente.Name = "txtNombrePaciente";
             this.txtNombrePaciente.Size = new System.Drawing.Size(141, 23);
             this.txtNombrePaciente.TabIndex = 8;
+            this.txtNombrePaciente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombrePaciente_KeyPress);
             this.txtNombrePaciente.Leave += new System.EventHandler(this.txtNombrePaciente_Leave);
             // 
             // txtDniPaciente

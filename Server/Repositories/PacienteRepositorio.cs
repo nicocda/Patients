@@ -16,6 +16,13 @@ namespace Server.Repositories
             Context.Database.EnsureCreated();
         }
 
+        public PacienteRepositorio(string connectionString)
+        {
+            Context = new DatabaseContext(connectionString);
+            Context.Database.EnsureCreated();
+        }
+
+
         public List<Paciente> ObtenerTodos()
         {
             return Context.Pacientes.ToList();

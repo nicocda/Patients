@@ -34,9 +34,10 @@ namespace Pacientes
             this.pacienteUserControl1 = new Pacientes.PacienteUserControl();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.txtNuevoDetalle = new System.Windows.Forms.RichTextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // pacienteUserControl1
@@ -75,14 +76,6 @@ namespace Pacientes
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(33, 92);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 271);
-            this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
             // txtNuevoDetalle
             // 
             this.txtNuevoDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -104,14 +97,33 @@ namespace Pacientes
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(537, -5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(10, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "i";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(33, 86);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(503, 287);
+            this.panel1.TabIndex = 7;
+            // 
             // ListarSesiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 450);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtNuevoDetalle);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pacienteUserControl1);
@@ -129,8 +141,9 @@ namespace Pacientes
         private PacienteUserControl pacienteUserControl1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox txtNuevoDetalle;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.FlowLayoutPanel panel1;
     }
 }

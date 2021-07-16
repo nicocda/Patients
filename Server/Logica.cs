@@ -11,9 +11,14 @@ namespace Server
     {
 
         PacienteRepositorio Repositorio;
-        public Logica()
+        //public Logica()
+        //{
+        //    Repositorio = new PacienteRepositorio();
+        //}
+
+        public Logica(string databaseName)
         {
-            Repositorio = new PacienteRepositorio();
+            Repositorio = new PacienteRepositorio(databaseName);
         }
         public void AgregarSesion(Sesion sesion, int pacienteId)
         {

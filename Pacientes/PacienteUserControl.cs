@@ -76,7 +76,7 @@ namespace Pacientes
         {
             if (string.IsNullOrEmpty(txtDniPaciente.Text?.Trim()))
                 return;
-            Server.Logica logica = new Server.Logica();
+            Server.Logica logica = new Server.Logica(Properties.Settings.Default.databaseName);
 
             var p = logica.ObtenerPacienteDni(txtDniPaciente.Text);
 
@@ -88,7 +88,13 @@ namespace Pacientes
         {
             if (string.IsNullOrEmpty(txtNombrePaciente.Text?.Trim()))
                 return;
-            Server.Logica logica = new Server.Logica();
+            BuscarPaciente();
+        }
+
+        private void BuscarPaciente()
+        {
+
+            Server.Logica logica = new Server.Logica(Properties.Settings.Default.databaseName);
 
             List<Paciente> pacientes = logica.ObtenerPacienteNombre(txtNombrePaciente.Text);
             if (pacientes != null)
@@ -131,6 +137,17 @@ namespace Pacientes
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+        }
+
+        private void txtNombrePaciente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (string.IsNullOrEmpty(txtNombrePaciente.Text?.Trim()))
+                    AbrirBuscardorPacientes(null);
+                else
+                    BuscarPaciente();
+            }
         }
     }
 }
