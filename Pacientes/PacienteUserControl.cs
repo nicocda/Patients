@@ -50,7 +50,7 @@ namespace Pacientes
             LimpiarCampos();
 
 
-            btnNew.Visible = false;
+            //btnNew.Visible = false;
             btnEliminar.Visible = false;
         }
 
