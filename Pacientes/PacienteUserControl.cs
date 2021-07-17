@@ -48,6 +48,10 @@ namespace Pacientes
         {
             InitializeComponent();
             LimpiarCampos();
+
+
+            btnNew.Visible = false;
+            btnEliminar.Visible = false;
         }
 
 
@@ -76,7 +80,7 @@ namespace Pacientes
         {
             if (string.IsNullOrEmpty(txtDniPaciente.Text?.Trim()))
                 return;
-            Server.Logica logica = new Server.Logica(Properties.Settings.Default.databaseName);
+            Server.Logica logica = new Server.Logica(Settings.Properties.DatabaseName);
 
             var p = logica.ObtenerPacienteDni(txtDniPaciente.Text);
 
@@ -94,7 +98,7 @@ namespace Pacientes
         private void BuscarPaciente()
         {
 
-            Server.Logica logica = new Server.Logica(Properties.Settings.Default.databaseName);
+            Server.Logica logica = new Server.Logica(Settings.Properties.DatabaseName);
 
             List<Paciente> pacientes = logica.ObtenerPacienteNombre(txtNombrePaciente.Text);
             if (pacientes != null)

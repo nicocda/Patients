@@ -25,6 +25,8 @@ namespace Pacientes
           | AnchorStyles.Right);
             AgregarScroll();
 
+
+            dateTimePicker.Value = DateTime.Today;
         }
 
 
@@ -36,7 +38,7 @@ namespace Pacientes
 
             panel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             panel1.WrapContents = false;
-           // panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            // panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             panel1.AutoScroll = true;
 
             //panel.AutoScroll = true;
@@ -69,18 +71,17 @@ namespace Pacientes
 
         private void Buscar()
         {
+            dateTimePicker.Value = DateTime.Today;
+            txtNuevoDetalle.Text = null;
+
             //panel1.Controls.Clear();
             //AgregarScroll();
-            //Remove only SesionVisual Controls
-            foreach (Control item in panel1.Controls.OfType<SesionVisual>())
-            {
-                panel1.Controls.Remove(item);
-            }
+            LimpiarPanel();
 
             if (!pacienteUserControl1.TieneValor())
                 return;
 
-            Logica logica = new Logica(Properties.Settings.Default.databaseName);
+            Logica logica = new Logica(Settings.Properties.DatabaseName);
             var sesiones = logica.ListarSesiones(pacienteUserControl1.IdPacienteSeleccionado.Value);
             if (sesiones != null && sesiones.Count > 0)
             {
@@ -90,20 +91,20 @@ namespace Pacientes
                 foreach (var s in sesiones)
                 {
                     SesionVisual control = new SesionVisual(s);
-                 //   control.Location = new Point(x, y);
-          //          control.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
-          //| AnchorStyles.Left)
-          //| AnchorStyles.Right);
+                    //   control.Location = new Point(x, y);
+                    //          control.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
+                    //| AnchorStyles.Left)
+                    //| AnchorStyles.Right);
                     y = y + control.Size.Height + 10;
                     int width = panel1.Size.Width - 140;
                     control.SetTamaño(width);
                     panel1.Controls.Add(control);
 
                 }
-                   // panel1.Size = new Size( panel1.Size.Width, y);
+                // panel1.Size = new Size( panel1.Size.Width, y);
             }
         }
-        
+
         private void ListarSesiones_ResizeEnd(object sender, EventArgs e)
         {
             if (!FirstTime)
@@ -117,22 +118,22 @@ namespace Pacientes
                 return;
 
             Sesion s = new Sesion();
-            s.FechaHora = DateTime.Today;
+            s.FechaHora = dateTimePicker.Value;
             s.Notas = txtNuevoDetalle.Text;
             //s.PacienteId = IdPacienteSeleccionado.Value;
 
             try
             {
-                Logica log = new Logica(Properties.Settings.Default.databaseName);
+                Logica log = new Logica(Settings.Properties.DatabaseName);
                 log.AgregarSesion(s, pacienteUserControl1.IdPacienteSeleccionado.Value);
                 Buscar();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            }
+        }
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -142,10 +143,23 @@ namespace Pacientes
                 if (f.Name == "Principal")
                     return;
             }
-                Principal frm = new Principal();
-                frm.WindowState = FormWindowState.Maximized;
-                frm.Show();
-            
+            Principal frm = new Principal();
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarPanel();
+        }
+       void LimpiarPanel()
+        {
+            panel1.Controls.Clear();
+            //foreach (Control item in panel1.Controls.OfType<SesionVisual>())
+            //{
+            //    panel1.Controls.Remove(item);
+            //}
         }
     }
 }

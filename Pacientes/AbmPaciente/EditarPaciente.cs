@@ -50,7 +50,7 @@ namespace Pacientes.AbmPaciente
             Paciente.Observaciones = Observaciones.Text;
             try
             {
-                Logica l = new Logica(Properties.Settings.Default.databaseName);
+                Logica l = new Logica(Settings.Properties.DatabaseName);
                 var pDB = l.GuardarPaciente(Paciente);
                 OnSave?.Invoke(this, pDB);
 

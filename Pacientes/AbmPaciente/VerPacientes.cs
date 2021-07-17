@@ -25,7 +25,7 @@ namespace Pacientes.AbmPaciente
 
         private void recargarTabla()
         {
-            Logica logica = new Logica(Properties.Settings.Default.databaseName);
+            Logica logica = new Logica(Settings.Properties.DatabaseName);
             var data = logica.ObtenerPacientes();
             ListaPacientes.DataSource = data;
 
@@ -57,7 +57,7 @@ namespace Pacientes.AbmPaciente
 
         private void EliminarPaciente(Paciente p)
         {
-            Logica log = new Logica(Properties.Settings.Default.databaseName);
+            Logica log = new Logica(Settings.Properties.DatabaseName);
             log.EliminarPaciente(p);
             recargarTabla();
         }
@@ -70,7 +70,7 @@ namespace Pacientes.AbmPaciente
 
                 int id = (int)row.Cells["Id"].Value;
 
-                Logica log = new Logica(Properties.Settings.Default.databaseName);
+                Logica log = new Logica(Settings.Properties.DatabaseName);
                 return log.ObtenerPaciente(id);
             }
             return null;

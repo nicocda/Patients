@@ -38,6 +38,8 @@ namespace Pacientes
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pacienteUserControl1
@@ -68,11 +70,12 @@ namespace Pacientes
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(406, 42);
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscar.Image = global::Pacientes.Properties.Resources.refresh;
+            this.btnBuscar.Location = new System.Drawing.Point(484, 54);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(104, 26);
+            this.btnBuscar.Size = new System.Drawing.Size(23, 26);
             this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "Buscar Sesiones";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -115,16 +118,39 @@ namespace Pacientes
             this.panel1.Size = new System.Drawing.Size(503, 287);
             this.panel1.TabIndex = 7;
             // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker.CustomFormat = "dd/mm/yyyy";
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker.Location = new System.Drawing.Point(303, 415);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(94, 23);
+            this.dateTimePicker.TabIndex = 8;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpiar.Image = global::Pacientes.Properties.Resources.delete;
+            this.btnLimpiar.Location = new System.Drawing.Point(513, 54);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(23, 26);
+            this.btnLimpiar.TabIndex = 9;
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // ListarSesiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 450);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtNuevoDetalle);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pacienteUserControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -145,5 +171,7 @@ namespace Pacientes
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel panel1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

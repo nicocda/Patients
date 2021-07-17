@@ -71,7 +71,7 @@ namespace Pacientes
 
             try
             {
-                Logica log = new Logica(Properties.Settings.Default.databaseName);
+                Logica log = new Logica(Settings.Properties.DatabaseName);
                 log.AgregarSesion(s, pacienteUserControl1.IdPacienteSeleccionado.Value);
 
 
