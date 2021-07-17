@@ -73,5 +73,10 @@ namespace Server.Repositories
             Context.Remove(p);
             Context.SaveChanges();
         }
+
+        internal Paciente ObtenerPacienteId(int id)
+        {
+            return Context.Pacientes.FirstOrDefault(x => x.Id == id);
+        }
     }
 }

@@ -40,6 +40,8 @@ namespace Pacientes
             this.panel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.txtExamenes = new System.Windows.Forms.RichTextBox();
+            this.btnEditarObservacion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pacienteUserControl1
@@ -139,11 +141,31 @@ namespace Pacientes
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // txtExamenes
+            // 
+            this.txtExamenes.Location = new System.Drawing.Point(289, 31);
+            this.txtExamenes.Name = "txtExamenes";
+            this.txtExamenes.Size = new System.Drawing.Size(108, 49);
+            this.txtExamenes.TabIndex = 10;
+            this.txtExamenes.Text = "";
+            // 
+            // btnEditarObservacion
+            // 
+            this.btnEditarObservacion.Image = global::Pacientes.Properties.Resources.pen;
+            this.btnEditarObservacion.Location = new System.Drawing.Point(373, 54);
+            this.btnEditarObservacion.Name = "btnEditarObservacion";
+            this.btnEditarObservacion.Size = new System.Drawing.Size(23, 26);
+            this.btnEditarObservacion.TabIndex = 11;
+            this.btnEditarObservacion.UseVisualStyleBackColor = true;
+            this.btnEditarObservacion.Click += new System.EventHandler(this.btnEditarObservacion_Click);
+            // 
             // ListarSesiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 450);
+            this.Controls.Add(this.btnEditarObservacion);
+            this.Controls.Add(this.txtExamenes);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.btnLimpiar);
@@ -173,5 +195,7 @@ namespace Pacientes
         private System.Windows.Forms.FlowLayoutPanel panel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.RichTextBox txtExamenes;
+        private System.Windows.Forms.Button btnEditarObservacion;
     }
 }

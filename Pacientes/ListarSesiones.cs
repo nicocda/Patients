@@ -62,6 +62,7 @@ namespace Pacientes
         private void PacienteUserControl1_OnSelected(object sender, Paciente e)
         {
             Buscar();
+            txtExamenes.Text = e.Observaciones;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -160,6 +161,14 @@ namespace Pacientes
             //{
             //    panel1.Controls.Remove(item);
             //}
+        }
+
+        private void btnEditarObservacion_Click(object sender, EventArgs e)
+        {
+            if (!pacienteUserControl1.IdPacienteSeleccionado.HasValue)
+                return;
+            Logica l = new Logica(Settings.Properties.DatabaseName);
+            l.EditarObservacionPaciente(pacienteUserControl1.IdPacienteSeleccionado.Value, txtExamenes.Text);
         }
     }
 }

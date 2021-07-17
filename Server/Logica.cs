@@ -128,5 +128,12 @@ namespace Server
 
             return p;
         }
+
+        public void EditarObservacionPaciente(int idPacienteSeleccionado, string text)
+        {
+            Paciente p = Repositorio.ObtenerPacienteId(idPacienteSeleccionado);
+            p.Observaciones = text;
+            Repositorio.Guardar(p);
+        }
     }
 }
