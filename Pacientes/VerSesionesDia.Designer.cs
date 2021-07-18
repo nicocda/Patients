@@ -71,7 +71,7 @@ namespace Pacientes
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.label1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerSesionesDia";
             this.Text = "Sesiones Dia";
             this.ResumeLayout(false);

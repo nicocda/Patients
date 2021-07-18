@@ -1,5 +1,5 @@
 ﻿
-namespace Pacientes
+namespace Fichero
 {
     partial class BuscarPaciente
     {
@@ -48,36 +48,36 @@ namespace Pacientes
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 74);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 64);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(409, 263);
+            this.dataGridView1.Size = new System.Drawing.Size(351, 228);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(77, 13);
+            this.txtDni.Location = new System.Drawing.Point(66, 11);
             this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(100, 23);
+            this.txtDni.Size = new System.Drawing.Size(86, 20);
             this.txtDni.TabIndex = 1;
             // 
             // txtNombre
             // 
             this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombre.Location = new System.Drawing.Point(77, 42);
+            this.txtNombre.Location = new System.Drawing.Point(66, 36);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(263, 23);
+            this.txtNombre.Size = new System.Drawing.Size(226, 20);
             this.txtNombre.TabIndex = 2;
             // 
             // btnBuscar
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscar.Location = new System.Drawing.Point(358, 41);
+            this.btnBuscar.Location = new System.Drawing.Point(307, 36);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(63, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(54, 20);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -86,9 +86,9 @@ namespace Pacientes
             // btnSeleccionar
             // 
             this.btnSeleccionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSeleccionar.Location = new System.Drawing.Point(346, 343);
+            this.btnSeleccionar.Location = new System.Drawing.Point(297, 297);
             this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.Size = new System.Drawing.Size(64, 20);
             this.btnSeleccionar.TabIndex = 4;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
@@ -97,26 +97,26 @@ namespace Pacientes
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 21);
+            this.label1.Location = new System.Drawing.Point(10, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 15);
+            this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Dni";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 43);
+            this.label2.Location = new System.Drawing.Point(10, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 15);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Nombre";
             // 
             // BuscarPaciente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 377);
+            this.ClientSize = new System.Drawing.Size(371, 327);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSeleccionar);
@@ -124,7 +124,7 @@ namespace Pacientes
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.dataGridView1);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BuscarPaciente";
             this.Text = "Buscar Paciente";
             this.Load += new System.EventHandler(this.BuscarPaciente_Load);

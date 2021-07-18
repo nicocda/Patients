@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    [Table("Paciente")]
+ 
+    [Table("paciente")]
     public class Paciente
     {
         [Key]

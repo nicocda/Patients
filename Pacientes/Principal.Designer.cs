@@ -91,7 +91,7 @@ namespace Pacientes
             this.Controls.Add(this.btnVerSesiones);
             this.Controls.Add(this.btnAgregarSesion);
             this.Controls.Add(this.btnAbmPacientes);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
             this.Text = "Pacientes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

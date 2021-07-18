@@ -1,5 +1,5 @@
 ﻿
-namespace Pacientes
+namespace Fichero
 {
     partial class ListarSesiones
     {
@@ -29,9 +29,9 @@ namespace Pacientes
         /// </summary>
         private void InitializeComponent()
         {
-            Server.Paciente paciente1 = new Server.Paciente();
+            Server.Paciente paciente2 = new Server.Paciente();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListarSesiones));
-            this.pacienteUserControl1 = new Pacientes.PacienteUserControl();
+            this.pacienteUserControl1 = new Fichero.PacienteUserControl();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtNuevoDetalle = new System.Windows.Forms.RichTextBox();
@@ -46,37 +46,38 @@ namespace Pacientes
             // 
             // pacienteUserControl1
             // 
-            this.pacienteUserControl1.Location = new System.Drawing.Point(102, 44);
+            this.pacienteUserControl1.Location = new System.Drawing.Point(87, 38);
             this.pacienteUserControl1.Name = "pacienteUserControl1";
-            this.pacienteUserControl1.Size = new System.Drawing.Size(265, 24);
+            this.pacienteUserControl1.Size = new System.Drawing.Size(227, 21);
             this.pacienteUserControl1.TabIndex = 0;
-            paciente1.DiaNacimiento = null;
-            paciente1.Direccion = null;
-            paciente1.DNI = "";
-            paciente1.Genero = null;
-            paciente1.Id = 0;
-            paciente1.NombreApellido = "";
-            paciente1.NroTelefono = null;
-            paciente1.Observaciones = null;
-            paciente1.Sesiones = null;
-            this.pacienteUserControl1.Value = paciente1;
+            paciente2.DiaNacimiento = null;
+            paciente2.Direccion = null;
+            paciente2.DNI = "";
+            paciente2.Genero = null;
+            paciente2.Id = 0;
+            paciente2.Localidad = null;
+            paciente2.NombreApellido = "";
+            paciente2.NroTelefono = null;
+            paciente2.Observaciones = null;
+            paciente2.Sesiones = null;
+            this.pacienteUserControl1.Value = paciente2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 46);
+            this.label1.Location = new System.Drawing.Point(28, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Paciente";
             // 
             // btnBuscar
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscar.Image = global::Pacientes.Properties.Resources.refresh;
-            this.btnBuscar.Location = new System.Drawing.Point(484, 54);
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.Location = new System.Drawing.Point(415, 47);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(23, 26);
+            this.btnBuscar.Size = new System.Drawing.Size(20, 23);
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -85,18 +86,18 @@ namespace Pacientes
             // 
             this.txtNuevoDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNuevoDetalle.Location = new System.Drawing.Point(33, 379);
+            this.txtNuevoDetalle.Location = new System.Drawing.Point(28, 328);
             this.txtNuevoDetalle.Name = "txtNuevoDetalle";
-            this.txtNuevoDetalle.Size = new System.Drawing.Size(364, 59);
+            this.txtNuevoDetalle.Size = new System.Drawing.Size(313, 52);
             this.txtNuevoDetalle.TabIndex = 4;
             this.txtNuevoDetalle.Text = "";
             // 
             // btnAgregar
             // 
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.Location = new System.Drawing.Point(406, 379);
+            this.btnAgregar.Location = new System.Drawing.Point(348, 328);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(134, 59);
+            this.btnAgregar.Size = new System.Drawing.Size(115, 51);
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -106,18 +107,18 @@ namespace Pacientes
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(537, -5);
+            this.label2.Location = new System.Drawing.Point(460, -4);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(10, 15);
+            this.label2.Size = new System.Drawing.Size(9, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "i";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(33, 86);
+            this.panel1.Location = new System.Drawing.Point(28, 75);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(503, 287);
+            this.panel1.Size = new System.Drawing.Size(431, 249);
             this.panel1.TabIndex = 7;
             // 
             // dateTimePicker
@@ -125,45 +126,45 @@ namespace Pacientes
             this.dateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker.CustomFormat = "dd/mm/yyyy";
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker.Location = new System.Drawing.Point(303, 415);
+            this.dateTimePicker.Location = new System.Drawing.Point(260, 360);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(94, 23);
+            this.dateTimePicker.Size = new System.Drawing.Size(81, 20);
             this.dateTimePicker.TabIndex = 8;
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpiar.Image = global::Pacientes.Properties.Resources.delete;
-            this.btnLimpiar.Location = new System.Drawing.Point(513, 54);
+            this.btnLimpiar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.Image")));
+            this.btnLimpiar.Location = new System.Drawing.Point(440, 47);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(23, 26);
+            this.btnLimpiar.Size = new System.Drawing.Size(20, 23);
             this.btnLimpiar.TabIndex = 9;
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // txtExamenes
             // 
-            this.txtExamenes.Location = new System.Drawing.Point(373, 31);
+            this.txtExamenes.Location = new System.Drawing.Point(320, 27);
             this.txtExamenes.Name = "txtExamenes";
-            this.txtExamenes.Size = new System.Drawing.Size(108, 49);
+            this.txtExamenes.Size = new System.Drawing.Size(93, 43);
             this.txtExamenes.TabIndex = 10;
             this.txtExamenes.Text = "";
             // 
             // btnEditarObservacion
             // 
-            this.btnEditarObservacion.Image = global::Pacientes.Properties.Resources.pen;
-            this.btnEditarObservacion.Location = new System.Drawing.Point(457, 54);
+            this.btnEditarObservacion.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarObservacion.Image")));
+            this.btnEditarObservacion.Location = new System.Drawing.Point(392, 47);
             this.btnEditarObservacion.Name = "btnEditarObservacion";
-            this.btnEditarObservacion.Size = new System.Drawing.Size(23, 26);
+            this.btnEditarObservacion.Size = new System.Drawing.Size(20, 23);
             this.btnEditarObservacion.TabIndex = 11;
             this.btnEditarObservacion.UseVisualStyleBackColor = true;
             this.btnEditarObservacion.Click += new System.EventHandler(this.btnEditarObservacion_Click);
             // 
             // ListarSesiones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 450);
+            this.ClientSize = new System.Drawing.Size(470, 390);
             this.Controls.Add(this.btnEditarObservacion);
             this.Controls.Add(this.txtExamenes);
             this.Controls.Add(this.btnBuscar);
@@ -175,7 +176,6 @@ namespace Pacientes
             this.Controls.Add(this.txtNuevoDetalle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pacienteUserControl1);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListarSesiones";
             this.Text = "Listado de Sesiones de un Paciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

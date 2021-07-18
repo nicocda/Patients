@@ -8,15 +8,12 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    [Table("Sesion")]
     public class Sesion
     {
         public int Id { get; set; }
         public DateTime FechaHora { get; set; }
 
-        //[ForeignKey("PacienteId")]
-        public virtual Paciente Paciente { get; set; }
-
+        public int PacienteId { get; set; }
         [MaxLength(4500)]
         public string Notas { get; set; }
 

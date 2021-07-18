@@ -1,5 +1,5 @@
 ﻿
-namespace Pacientes.AbmPaciente
+namespace Fichero.AbmPaciente
 {
     partial class VerPacientes
     {
