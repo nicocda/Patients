@@ -80,12 +80,17 @@ namespace Fichero
         {
             if (string.IsNullOrEmpty(txtDniPaciente.Text?.Trim()))
                 return;
+
+            Cursor.Current = Cursors.WaitCursor;
+
             Server.Logica logica = new Server.Logica(Settings.Properties.DatabaseName);
 
             var p = logica.ObtenerPacienteDni(txtDniPaciente.Text);
 
             if (p != null)
                 SeleccionarPaciente(p);
+
+            Cursor.Current = Cursors.Default;
         }
 
         private void txtNombrePaciente_Leave(object sender, EventArgs e)
@@ -98,6 +103,7 @@ namespace Fichero
         private void BuscarPaciente()
         {
 
+            Cursor.Current = Cursors.WaitCursor;
             Server.Logica logica = new Server.Logica(Settings.Properties.DatabaseName);
 
             List<Paciente> pacientes = logica.ObtenerPacienteNombre(txtNombrePaciente.Text);
@@ -108,6 +114,7 @@ namespace Fichero
                 else if (pacientes.Count > 1)
                     AbrirBuscardorPacientes(pacientes);
             }
+            Cursor.Current = Cursors.Default;
         }
 
         private void AbrirBuscardorPacientes(List<Paciente> pacientes)

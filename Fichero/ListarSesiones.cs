@@ -40,23 +40,6 @@ namespace Fichero
             panel1.WrapContents = false;
             // panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             panel1.AutoScroll = true;
-
-            //panel.AutoScroll = true;
-            //panel1.AutoScroll = false;
-            //panel1.HorizontalScroll.Enabled = false;
-            //panel1.HorizontalScroll.Visible = false;
-            //panel1.HorizontalScroll.Maximum = 0;
-            //panel1.AutoScroll = true;
-
-
-            //ScrollBar vScrollBar1 = new VScrollBar();
-
-            //vScrollBar1.Dock = DockStyle.Left;
-            //vScrollBar1.Scroll += (sender, e) =>
-            //{
-            //    panel1.VerticalScroll.Value = vScrollBar1.Value;
-            //};
-            //panel1.Controls.Add(vScrollBar1);
         }
 
         private void PacienteUserControl1_OnSelected(object sender, Paciente e)
@@ -82,6 +65,7 @@ namespace Fichero
             if (!pacienteUserControl1.TieneValor())
                 return;
 
+            Cursor.Current = Cursors.WaitCursor;
             Logica logica = new Logica(Settings.Properties.DatabaseName);
             var sesiones = logica.ListarSesiones(pacienteUserControl1.IdPacienteSeleccionado.Value);
             if (sesiones != null && sesiones.Count > 0)
@@ -93,20 +77,17 @@ namespace Fichero
                 foreach (var s in sesiones)
                 {
                     control = new SesionVisual(s);
-                    //   control.Location = new Point(x, y);
-                    //          control.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
-                    //| AnchorStyles.Left)
-                    //| AnchorStyles.Right);
                     y = y + control.Size.Height + 10;
                     int width = panel1.Size.Width - 140;
                     control.SetTamaño(width);
                     panel1.Controls.Add(control);
 
                 }
-                // panel1.Size = new Size( panel1.Size.Width, y);
+
+                //Voy a la ultima posicion del scroll
                 if(control != null && panel1.VerticalScroll.Visible)
                     panel1.ScrollControlIntoView(control);
-                //panel1.VerticalScroll.Value = panel1.VerticalScroll.Maximum;
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -129,12 +110,17 @@ namespace Fichero
 
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
+
                 Logica log = new Logica(Settings.Properties.DatabaseName);
                 log.AgregarSesion(s, pacienteUserControl1.IdPacienteSeleccionado.Value);
                 Buscar();
+
+                Cursor.Current = Cursors.Default;
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
 
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -171,8 +157,10 @@ namespace Fichero
         {
             if (!pacienteUserControl1.IdPacienteSeleccionado.HasValue)
                 return;
+            Cursor.Current = Cursors.WaitCursor;
             Logica l = new Logica(Settings.Properties.DatabaseName);
             l.EditarObservacionPaciente(pacienteUserControl1.IdPacienteSeleccionado.Value, txtExamenes.Text);
+            Cursor.Current = Cursors.Default;
         }
     }
 }
