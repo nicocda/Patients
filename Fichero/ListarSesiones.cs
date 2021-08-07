@@ -86,12 +86,13 @@ namespace Fichero
             var sesiones = logica.ListarSesiones(pacienteUserControl1.IdPacienteSeleccionado.Value);
             if (sesiones != null && sesiones.Count > 0)
             {
-                sesiones = sesiones.OrderByDescending(c => c.FechaHora).ToList();
+                sesiones = sesiones.OrderBy(c => c.FechaHora).ToList();
                 int x = 30;
                 int y = 10;
+                SesionVisual control = null;
                 foreach (var s in sesiones)
                 {
-                    SesionVisual control = new SesionVisual(s);
+                    control = new SesionVisual(s);
                     //   control.Location = new Point(x, y);
                     //          control.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
                     //| AnchorStyles.Left)
@@ -103,6 +104,9 @@ namespace Fichero
 
                 }
                 // panel1.Size = new Size( panel1.Size.Width, y);
+                if(control != null && panel1.VerticalScroll.Visible)
+                    panel1.ScrollControlIntoView(control);
+                //panel1.VerticalScroll.Value = panel1.VerticalScroll.Maximum;
             }
         }
 
