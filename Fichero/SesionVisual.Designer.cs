@@ -39,7 +39,7 @@ namespace Fichero
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNota.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNota.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNota.Font = new System.Drawing.Font("Segoe UI Symbol", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNota.Location = new System.Drawing.Point(16, 26);
             this.txtNota.Name = "txtNota";
             this.txtNota.ReadOnly = true;
