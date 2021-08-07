@@ -92,6 +92,7 @@ namespace Server
             pacienteDB.DNI = p.DNI;
             pacienteDB.Genero = p.Genero;
             pacienteDB.Localidad = p.Localidad;
+            pacienteDB.Observaciones = p.Observaciones;
 
             Repositorio.Guardar(pacienteDB);
             return pacienteDB;
