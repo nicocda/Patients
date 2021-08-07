@@ -25,21 +25,29 @@ namespace Fichero
             txtNota.Text = notas;
             txtNota.WordWrap = true;
             txtNota.ScrollBars = RichTextBoxScrollBars.None;
+        }
 
+
+        internal void SetTamaño(int width)
+        {
+            int lines = 1 + ContarEnters(txtNota.Text);
+            int margin = 0;
+            txtNota.Size = new Size(width, Convert.ToInt32(txtNota.Font.Size)*2 * lines);
+            this.Size = new Size(width + 20, this.lblFecha.Size.Height + margin + txtNota.Size.Height);
 
         }
 
-     
-        internal void SetTamaño(int width)
-        {
-            this.Size = new Size(width+20, this.Size.Height);
-            txtNota.Size = new Size(width, txtNota.Size.Height);
 
+        internal int ContarEnters(string str)
+        {
+            string needle = "\n";
+            int needleCount = (str.Length - str.Replace(needle, "").Length) / needle.Length;
+            return needleCount;
         }
 
         private void txtNota_ContentsResized(object sender, ContentsResizedEventArgs e)
         {
-            const int margin = 0;
+            const int margin = 5;
             RichTextBox rch = sender as RichTextBox;
             rch.ClientSize = new Size(
                 e.NewRectangle.Width + margin,

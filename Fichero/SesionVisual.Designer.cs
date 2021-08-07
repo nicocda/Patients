@@ -39,10 +39,11 @@ namespace Fichero
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNota.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNota.Location = new System.Drawing.Point(0, 20);
+            this.txtNota.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNota.Location = new System.Drawing.Point(16, 26);
             this.txtNota.Name = "txtNota";
             this.txtNota.ReadOnly = true;
-            this.txtNota.Size = new System.Drawing.Size(150, 43);
+            this.txtNota.Size = new System.Drawing.Size(113, 28);
             this.txtNota.TabIndex = 0;
             this.txtNota.Text = "";
             this.txtNota.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.txtNota_ContentsResized);
@@ -50,21 +51,21 @@ namespace Fichero
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblFecha.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.Location = new System.Drawing.Point(0, 2);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(111, 15);
+            this.lblFecha.Size = new System.Drawing.Size(153, 21);
             this.lblFecha.TabIndex = 1;
             this.lblFecha.Text = "99/99/9999 99:99";
             // 
             // SesionVisual
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.txtNota);
             this.Name = "SesionVisual";
-            this.Size = new System.Drawing.Size(150, 63);
+            this.Size = new System.Drawing.Size(129, 55);
             this.ResumeLayout(false);
             this.PerformLayout();
 
