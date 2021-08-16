@@ -34,7 +34,7 @@ namespace Server.Repositories
 
         public void Guardar(Paciente p)
         {
-            if(p.Id == 0)
+            if (p.Id == 0)
                 Context.Pacientes.Add(p);
             Context.SaveChanges();
         }
@@ -62,13 +62,29 @@ namespace Server.Repositories
             //var query = Context.Pacientes
             //   .Where(x => claves.All(c => x.NombreApellido.ToLower().Trim().Contains(c)));
             string filter = nombre.ToLower().Trim();
-            return Context.Pacientes.Where(x=>x.NombreApellido.ToLower().Contains(filter)).ToList();
+            return Context.Pacientes.Where(x => x.NombreApellido.ToLower().Contains(filter)).ToList();
 
         }
 
         internal void EliminarPaciente(Paciente p)
         {
-            Context.Pacientes.Remove(p);
+            Context.Pacientes.Attach(p);
+            Context.Entry(p).State = System.Data.Entity.EntityState.Deleted;
+            Context.SaveChanges();
+        }
+
+        internal void EliminarSesiones(Sesion s)
+        {
+            EliminarSesiones(new List<Sesion>() { s });
+        }
+
+        internal void EliminarSesiones(List<Sesion> sesiones)
+        {
+            for (int i = 0; sesiones.Count > 0;)
+            {
+                Context.Sesiones.Attach(sesiones[i]);
+                Context.Entry(sesiones[i]).State = System.Data.Entity.EntityState.Deleted;
+            }
             Context.SaveChanges();
         }
 

@@ -13,11 +13,14 @@ namespace Fichero
 {
     public partial class SesionVisual : UserControl
     {
+        Sesion Data;
         public SesionVisual(Sesion s)
         {
             InitializeComponent();
             lblFecha.Text = s.GetFechaStr();
             SetNota(s.Notas);
+            Data = s;
+
         }
 
         private void SetNota(string notas)
@@ -32,7 +35,7 @@ namespace Fichero
         {
             int lines = 1 + ContarEnters(txtNota.Text);
             int margin = 0;
-            txtNota.Size = new Size(width, Convert.ToInt32(txtNota.Font.Size)*2 * lines);
+            txtNota.Size = new Size(width, Convert.ToInt32(txtNota.Font.Size) * 2 * lines);
             this.Size = new Size(width + 20, this.lblFecha.Size.Height + margin + txtNota.Size.Height);
 
         }
@@ -52,6 +55,24 @@ namespace Fichero
             rch.ClientSize = new Size(
                 e.NewRectangle.Width + margin,
                 e.NewRectangle.Height + margin);
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            var dialogResult = MessageBox.Show("¿Realmente desea eliminar la sesión?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    Logica l = new Logica(Settings.Properties.DatabaseName);
+                    l.EliminarSesion(Data);
+                    this.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

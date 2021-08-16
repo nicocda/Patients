@@ -18,6 +18,7 @@ namespace Fichero
         {
             InitializeComponent();
             pacienteUserControl1.OnSelected += PacienteUserControl1_OnSelected;
+            pacienteUserControl1.OnDeleted += PacienteUserControl1_OnDeleted;
             this.SizeChanged += ListarSesiones_ResizeEnd;
 
             panel1.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
@@ -29,6 +30,10 @@ namespace Fichero
             dateTimePicker.Value = DateTime.Today;
         }
 
+        private void PacienteUserControl1_OnDeleted(object sender, Paciente e)
+        {
+            LimpiarPanel();
+        }
 
         private void AgregarScroll()
         {

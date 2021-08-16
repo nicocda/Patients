@@ -29,8 +29,10 @@ namespace Fichero
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SesionVisual));
             this.txtNota = new System.Windows.Forms.RichTextBox();
             this.lblFecha = new System.Windows.Forms.Label();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNota
@@ -58,10 +60,22 @@ namespace Fichero
             this.lblFecha.TabIndex = 1;
             this.lblFecha.Text = "99/99/9999 99:99";
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.Location = new System.Drawing.Point(109, 3);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(17, 14);
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // SesionVisual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.txtNota);
             this.Name = "SesionVisual";
@@ -75,5 +89,6 @@ namespace Fichero
 
         private System.Windows.Forms.RichTextBox txtNota;
         private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

@@ -64,9 +64,32 @@ namespace Server
             Repositorio.Guardar(p);
         }
 
-        public void EliminarPaciente(Paciente p)
+        public void EliminarPaciente(Paciente paciente,bool eliminaSesiones)
         {
-            Repositorio.EliminarPaciente(p);
+            var tran = Repositorio.Context.Database.BeginTransaction();
+            try
+            {
+                var p = Repositorio.ObtenerPacienteId(paciente.Id);
+
+                if (eliminaSesiones)
+                    Repositorio.EliminarSesiones(p.Sesiones);
+                else if (p.Sesiones != null && p.Sesiones.Count > 1)
+                    throw new Exception("El paciente contiene sesiones, Borrelas antes de eliminar el paciente");
+
+                Repositorio.EliminarPaciente(p);
+                tran.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (tran != null)
+                    tran.Rollback();
+                throw ex;
+            }
+        }
+
+        public void EliminarSesion(Sesion s)
+        {
+            EliminarSesion(s);
         }
 
         public Paciente GuardarPaciente(Paciente p)
@@ -79,7 +102,7 @@ namespace Server
             Paciente pacienteDB = Repositorio.ObtenerUno(p.Id);
             if (pacienteDB == null)
             {
-                pacienteDB = Repositorio.ObtenerPorNombreyDni(p.NombreApellido,p.DNI);
+                pacienteDB = Repositorio.ObtenerPorNombreyDni(p.NombreApellido, p.DNI);
                 if (pacienteDB != null)
                     throw new Exception("Ya existe un paciente con ese nombre y Dni");
                 pacienteDB = new Paciente();
@@ -115,7 +138,7 @@ namespace Server
                 throw new Exception("No se especifico dni");
 
             Paciente p = Repositorio.ObtenerPacienteDni(dni);
-            
+
             return p;
         }
 
@@ -137,5 +160,6 @@ namespace Server
             p.Observaciones = text;
             Repositorio.Guardar(p);
         }
+
     }
 }

@@ -17,6 +17,7 @@ namespace Fichero
 
         public delegate void OnSelectedHandler(object sender, Paciente e);
         public event OnSelectedHandler OnSelected;
+        public event OnSelectedHandler OnDeleted;
 
         public int? IdPacienteSeleccionado = null;
 
@@ -51,7 +52,7 @@ namespace Fichero
 
 
             //btnNew.Visible = false;
-            btnEliminar.Visible = false;
+            btnEliminar.Visible = true;
         }
 
 
@@ -147,7 +148,37 @@ namespace Fichero
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            LimpiarCampos();
+            if (!IdPacienteSeleccionado.HasValue)
+                return;
+
+            var dialogResult = MessageBox.Show("¿Realmente desea eliminar el paciente?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    Logica l = new Logica(Settings.Properties.DatabaseName);
+
+                    var sesiones = l.ListarSesiones(IdPacienteSeleccionado.Value);
+                    bool resp = true;
+                    if (sesiones != null && sesiones.Count > 0)
+                    {
+                        dialogResult = MessageBox.Show("El paciente tiene Sesiones, desea eliminarlo de todas formas? Dichas sesiones se perderan", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        resp = (dialogResult == DialogResult.Yes);
+
+                    }
+
+                    l.EliminarPaciente(new Paciente()
+                    {
+                        Id = IdPacienteSeleccionado.Value
+                    }, resp);
+                    LimpiarCampos();
+                    OnDeleted?.Invoke(this, null);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void txtNombrePaciente_KeyPress(object sender, KeyPressEventArgs e)

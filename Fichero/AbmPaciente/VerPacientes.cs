@@ -58,7 +58,7 @@ namespace Fichero.AbmPaciente
         private void EliminarPaciente(Paciente p)
         {
             Logica log = new Logica(Settings.Properties.DatabaseName);
-            log.EliminarPaciente(p);
+            log.EliminarPaciente(p,false);
             recargarTabla();
         }
 
