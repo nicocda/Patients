@@ -29,7 +29,7 @@ namespace Fichero
         /// </summary>
         private void InitializeComponent()
         {
-            Server.Paciente paciente2 = new Server.Paciente();
+            Server.Paciente paciente1 = new Server.Paciente();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListarSesiones));
             this.pacienteUserControl1 = new Fichero.PacienteUserControl();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,17 +50,17 @@ namespace Fichero
             this.pacienteUserControl1.Name = "pacienteUserControl1";
             this.pacienteUserControl1.Size = new System.Drawing.Size(227, 21);
             this.pacienteUserControl1.TabIndex = 0;
-            paciente2.DiaNacimiento = null;
-            paciente2.Direccion = null;
-            paciente2.DNI = "";
-            paciente2.Genero = null;
-            paciente2.Id = 0;
-            paciente2.Localidad = null;
-            paciente2.NombreApellido = "";
-            paciente2.NroTelefono = null;
-            paciente2.Observaciones = null;
-            paciente2.Sesiones = null;
-            this.pacienteUserControl1.Value = paciente2;
+            paciente1.DiaNacimiento = null;
+            paciente1.Direccion = null;
+            paciente1.DNI = "";
+            paciente1.Genero = null;
+            paciente1.Id = 0;
+            paciente1.Localidad = null;
+            paciente1.NombreApellido = "";
+            paciente1.NroTelefono = null;
+            paciente1.Observaciones = null;
+            paciente1.Sesiones = null;
+            this.pacienteUserControl1.Value = paciente1;
             // 
             // label1
             // 
@@ -74,7 +74,8 @@ namespace Fichero
             // btnBuscar
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscar.Location = new System.Drawing.Point(415, 47);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(20, 23);
@@ -134,7 +135,8 @@ namespace Fichero
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpiar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.Image")));
+            this.btnLimpiar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.BackgroundImage")));
+            this.btnLimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLimpiar.Location = new System.Drawing.Point(440, 47);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(20, 23);
@@ -152,7 +154,8 @@ namespace Fichero
             // 
             // btnEditarObservacion
             // 
-            this.btnEditarObservacion.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarObservacion.Image")));
+            this.btnEditarObservacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditarObservacion.BackgroundImage")));
+            this.btnEditarObservacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEditarObservacion.Location = new System.Drawing.Point(392, 47);
             this.btnEditarObservacion.Name = "btnEditarObservacion";
             this.btnEditarObservacion.Size = new System.Drawing.Size(20, 23);

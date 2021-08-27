@@ -36,6 +36,9 @@ namespace Server.Repositories
         {
             if (p.Id == 0)
                 Context.Pacientes.Add(p);
+            else
+                Context.Entry<Paciente>(p).State = System.Data.Entity.EntityState.Modified;
+            
             Context.SaveChanges();
         }
 
@@ -80,7 +83,7 @@ namespace Server.Repositories
 
         internal void EliminarSesiones(List<Sesion> sesiones)
         {
-            for (int i = 0; sesiones.Count > 0;)
+            for (int i = 0; sesiones.Count > i;i++)
             {
                 Context.Sesiones.Attach(sesiones[i]);
                 Context.Entry(sesiones[i]).State = System.Data.Entity.EntityState.Deleted;

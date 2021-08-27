@@ -175,7 +175,7 @@ namespace Pacientes
             this.Controls.Add(this.txtNuevoDetalle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pacienteUserControl1);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListarSesiones";
             this.Text = "Listado de Sesiones de un Paciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

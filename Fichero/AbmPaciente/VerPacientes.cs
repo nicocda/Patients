@@ -13,6 +13,10 @@ namespace Fichero.AbmPaciente
 {
     public partial class VerPacientes : Form
     {
+        public delegate void OnSearchedHandler(object sender, Paciente e);
+        public event OnSearchedHandler OnSearched;
+
+
         public VerPacientes()
         {
             InitializeComponent();
@@ -27,7 +31,8 @@ namespace Fichero.AbmPaciente
         {
             Logica logica = new Logica(Settings.Properties.DatabaseName);
             var data = logica.ObtenerPacientes();
-            ListaPacientes.DataSource = data;
+            
+            ListaPacientes.DataSource = data.OrderBy(x=>x.NombreApellido).ToList();
 
         }
 
@@ -43,7 +48,7 @@ namespace Fichero.AbmPaciente
             var p = GetSeleccionado();
             if (p == null)
                 return;
-            if (p.Sesiones != null && p.Sesiones.Count>0)
+            if (p.Sesiones != null && p.Sesiones.Count > 0)
             {
                 var rsp = MessageBox.Show("El paciente tiene sesiones registradas. ¿Igualmente desea eliminarlo?", "", MessageBoxButtons.YesNo);
                 if (rsp == DialogResult.Yes)
@@ -58,7 +63,7 @@ namespace Fichero.AbmPaciente
         private void EliminarPaciente(Paciente p)
         {
             Logica log = new Logica(Settings.Properties.DatabaseName);
-            log.EliminarPaciente(p,false);
+            log.EliminarPaciente(p, false);
             recargarTabla();
         }
 
@@ -81,6 +86,20 @@ namespace Fichero.AbmPaciente
             EditarPaciente form = new EditarPaciente(GetSeleccionado());
             form.ShowDialog();
             recargarTabla();
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            if (ListaPacientes.SelectedRows.Count != 0)
+            {
+                DataGridViewRow row = this.ListaPacientes.SelectedRows[0];
+
+                int id = (int)row.Cells[0].Value;
+                string nombre = (string)row.Cells[1].Value;
+                string dni = (string)row.Cells[2].Value;
+                OnSearched?.Invoke(this, new Paciente() { Id = id, DNI = dni, NombreApellido = nombre });
+                this.Close();
+            }
         }
     }
 }

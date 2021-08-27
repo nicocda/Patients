@@ -59,7 +59,7 @@ namespace Fichero
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            var dialogResult = MessageBox.Show("¿Realmente desea eliminar la sesión?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            var dialogResult = MessageBox.Show("Desea eliminar la sesión \r\n"+ txtNota.Text +" ("+ lblFecha.Text+")", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dialogResult == DialogResult.Yes)
             {
                 try

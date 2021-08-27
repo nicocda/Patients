@@ -101,7 +101,7 @@ namespace Pacientes.AbmPaciente
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.ListaPacientes);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerPacientes";
             this.Text = "Pacientes";
             this.Load += new System.EventHandler(this.VerPacientes_Load);

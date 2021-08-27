@@ -52,7 +52,7 @@ namespace Fichero
 
 
             //btnNew.Visible = false;
-            btnEliminar.Visible = true;
+            btnEliminar.Visible = false;
         }
 
 
@@ -120,13 +120,16 @@ namespace Fichero
 
         private void AbrirBuscardorPacientes(List<Paciente> pacientes)
         {
-            BuscarPaciente form = null;
-            if (pacientes != null && pacientes.Count > 0)
-                form = new BuscarPaciente(pacientes);
-            else
-                form = new BuscarPaciente();
+
+            VerPacientes form = new VerPacientes();
+            
+            //BuscarPaciente form = null;
+            //if (pacientes != null && pacientes.Count > 0)
+            //    form = new BuscarPaciente(pacientes);
+            //else
+            //    form = new BuscarPaciente();
             form.OnSearched += Form_OnSearched;
-            form.ShowDialog();
+            form.Show();
         }
 
         private void Form_OnSearched(object sender, Paciente e)

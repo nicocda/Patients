@@ -83,7 +83,7 @@ namespace Fichero
                 {
                     control = new SesionVisual(s);
                     y = y + control.Size.Height + 10;
-                    int width = panel1.Size.Width - 140;
+                    int width = panel1.Size.Width-30;
                     control.SetTamaño(width);
                     panel1.Controls.Add(control);
 

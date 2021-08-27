@@ -32,6 +32,7 @@ namespace Fichero.AbmPaciente
             Telefono.Text = p.NroTelefono;
             Direccion.Text = p.Direccion;
             Observaciones.Text = p.Observaciones;
+            Localidad.Text = p.Localidad;
             this.Paciente = p;
         }
 
@@ -48,13 +49,14 @@ namespace Fichero.AbmPaciente
             Paciente.Genero = GenHombre.Checked ? GenHombre.Text : GenMujer.Text;
             Paciente.NroTelefono = Telefono.Text;
             Paciente.Observaciones = Observaciones.Text;
+            Paciente.Localidad = Localidad.Text;
             try
             {
                 Logica l = new Logica(Settings.Properties.DatabaseName);
                 var pDB = l.GuardarPaciente(Paciente);
                 OnSave?.Invoke(this, pDB);
 
-                MessageBox.Show("Paciente agregado correctamente");
+                MessageBox.Show("Paciente editado correctamente");
                 this.Close();
             }
             catch (Exception ex)

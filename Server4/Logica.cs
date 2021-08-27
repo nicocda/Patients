@@ -89,7 +89,7 @@ namespace Server
 
         public void EliminarSesion(Sesion s)
         {
-            EliminarSesion(s);
+            Repositorio.EliminarSesiones(s);
         }
 
         public Paciente GuardarPaciente(Paciente p)
@@ -116,6 +116,7 @@ namespace Server
             pacienteDB.Genero = p.Genero;
             pacienteDB.Localidad = p.Localidad;
             pacienteDB.Observaciones = p.Observaciones;
+            pacienteDB.Localidad = p.Localidad;
 
             Repositorio.Guardar(pacienteDB);
             return pacienteDB;

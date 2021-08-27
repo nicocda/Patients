@@ -124,7 +124,7 @@ namespace Pacientes
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.dataGridView1);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BuscarPaciente";
             this.Text = "Buscar Paciente";
             this.Load += new System.EventHandler(this.BuscarPaciente_Load);
