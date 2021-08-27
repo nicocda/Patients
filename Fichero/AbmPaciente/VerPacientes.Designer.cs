@@ -79,6 +79,7 @@ namespace Fichero.AbmPaciente
             this.ListaPacientes.ShowEditingIcon = false;
             this.ListaPacientes.Size = new System.Drawing.Size(1120, 462);
             this.ListaPacientes.TabIndex = 0;
+            this.ListaPacientes.CellDoubleClick += ListaPacientes_CellDoubleClick;
             // 
             // btnNuevo
             // 
@@ -213,6 +214,7 @@ namespace Fichero.AbmPaciente
             this.PerformLayout();
 
         }
+
 
         #endregion
 

@@ -90,6 +90,16 @@ namespace Fichero.AbmPaciente
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            Seleccionar();
+        }
+
+        private void ListaPacientes_CellDoubleClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            Seleccionar();
+        }
+
+        void Seleccionar()
+        {
             if (ListaPacientes.SelectedRows.Count != 0)
             {
                 DataGridViewRow row = this.ListaPacientes.SelectedRows[0];
