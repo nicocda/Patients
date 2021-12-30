@@ -15,6 +15,7 @@ namespace Fichero.AbmPaciente
     {
         public delegate void OnSearchedHandler(object sender, Paciente e);
         public event OnSearchedHandler OnSearched;
+        List<Paciente> ListaCompleta;
 
 
         public VerPacientes()
@@ -30,9 +31,9 @@ namespace Fichero.AbmPaciente
         private void recargarTabla()
         {
             Logica logica = new Logica(Settings.Properties.DatabaseName);
-            var data = logica.ObtenerPacientes();
+            ListaCompleta = logica.ObtenerPacientes().OrderBy(x => x.NombreApellido).ToList();
             
-            ListaPacientes.DataSource = data.OrderBy(x=>x.NombreApellido).ToList();
+            ListaPacientesGrid.DataSource = ListaCompleta;
 
         }
 
@@ -69,9 +70,9 @@ namespace Fichero.AbmPaciente
 
         private Paciente GetSeleccionado()
         {
-            if (ListaPacientes.SelectedRows.Count != 0)
+            if (ListaPacientesGrid.SelectedRows.Count != 0)
             {
-                DataGridViewRow row = this.ListaPacientes.SelectedRows[0];
+                DataGridViewRow row = this.ListaPacientesGrid.SelectedRows[0];
 
                 int id = (int)row.Cells["Id"].Value;
 
@@ -100,9 +101,9 @@ namespace Fichero.AbmPaciente
 
         void Seleccionar()
         {
-            if (ListaPacientes.SelectedRows.Count != 0)
+            if (ListaPacientesGrid.SelectedRows.Count != 0)
             {
-                DataGridViewRow row = this.ListaPacientes.SelectedRows[0];
+                DataGridViewRow row = this.ListaPacientesGrid.SelectedRows[0];
 
                 int id = (int)row.Cells[0].Value;
                 string nombre = (string)row.Cells[1].Value;
@@ -110,6 +111,21 @@ namespace Fichero.AbmPaciente
                 OnSearched?.Invoke(this, new Paciente() { Id = id, DNI = dni, NombreApellido = nombre });
                 this.Close();
             }
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            var textToFilter = txtSearchApenom.Text.ToLower();
+            if (string.IsNullOrEmpty(textToFilter))
+             ListaPacientesGrid.DataSource = ListaCompleta; 
+            else
+                ListaPacientesGrid.DataSource = ListaCompleta.Where(x=>x.NombreApellido.ToLower().Contains(textToFilter)).ToList();
+        }
+
+        private void txtSearchApenom_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnFiltrar_Click(null, null);
         }
     }
 }
