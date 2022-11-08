@@ -32,8 +32,10 @@ namespace Fichero.AbmPaciente
         {
             Logica logica = new Logica(Settings.Properties.DatabaseName);
             ListaCompleta = logica.ObtenerPacientes().OrderBy(x => x.NombreApellido).ToList();
-            
+
             ListaPacientesGrid.DataSource = ListaCompleta;
+            int count = ListaCompleta != null ? ListaCompleta.Count : 0;
+            lblCantRegistros.Text = $"Se encontraron {count} registros";
 
         }
 
@@ -49,23 +51,30 @@ namespace Fichero.AbmPaciente
             var p = GetSeleccionado();
             if (p == null)
                 return;
-            if (p.Sesiones != null && p.Sesiones.Count > 0)
-            {
-                var rsp = MessageBox.Show("El paciente tiene sesiones registradas. ¿Igualmente desea eliminarlo?", "", MessageBoxButtons.YesNo);
-                if (rsp == DialogResult.Yes)
-                {
-                    EliminarPaciente(p);
-                }
-            }
-            else
-                EliminarPaciente(p);
+            //if (p.Sesiones != null && p.Sesiones.Count > 0)
+            //{
+            //    var rsp = MessageBox.Show("El paciente tiene sesiones registradas. ¿Igualmente desea eliminarlo?", "", MessageBoxButtons.YesNo);
+            //    if (rsp == DialogResult.Yes)
+            //    {
+            //        EliminarPaciente(p);
+            //    }
+            //}
+            //else
+            EliminarPaciente(p);
         }
 
         private void EliminarPaciente(Paciente p)
         {
-            Logica log = new Logica(Settings.Properties.DatabaseName);
-            log.EliminarPaciente(p, false);
-            recargarTabla();
+            try
+            {
+                Logica log = new Logica(Settings.Properties.DatabaseName);
+                log.EliminarPaciente(p, false);
+                recargarTabla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private Paciente GetSeleccionado()
@@ -84,9 +93,16 @@ namespace Fichero.AbmPaciente
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            EditarPaciente form = new EditarPaciente(GetSeleccionado());
-            form.ShowDialog();
-            recargarTabla();
+            try
+            {
+                EditarPaciente form = new EditarPaciente(GetSeleccionado());
+                form.ShowDialog();
+                recargarTabla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -108,7 +124,8 @@ namespace Fichero.AbmPaciente
                 int id = (int)row.Cells[0].Value;
                 string nombre = (string)row.Cells[1].Value;
                 string dni = (string)row.Cells[2].Value;
-                OnSearched?.Invoke(this, new Paciente() { Id = id, DNI = dni, NombreApellido = nombre });
+                string observaciones = (string)row.Cells[6].Value;
+                OnSearched?.Invoke(this, new Paciente() { Id = id, DNI = dni, NombreApellido = nombre, Observaciones = observaciones });
                 this.Close();
             }
         }
@@ -116,16 +133,31 @@ namespace Fichero.AbmPaciente
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             var textToFilter = txtSearchApenom.Text.ToLower();
-            if (string.IsNullOrEmpty(textToFilter))
-             ListaPacientesGrid.DataSource = ListaCompleta; 
-            else
-                ListaPacientesGrid.DataSource = ListaCompleta.Where(x=>x.NombreApellido.ToLower().Contains(textToFilter)).ToList();
+            List<Paciente> pacientes = ListaCompleta;
+            if (!string.IsNullOrEmpty(textToFilter))
+                pacientes = ListaCompleta.Where(x =>
+                x.NombreApellido.ToLower().Contains(textToFilter)
+                || x.DNI.ToLower().Contains(textToFilter)
+                || x.Localidad.ToLower().Contains(textToFilter)
+                || x.Observaciones.ToLower().Contains(textToFilter)
+                || x.NroTelefono.ToLower().Contains(textToFilter)
+
+                ).ToList();
+
+            ListaPacientesGrid.DataSource = pacientes;
+            int count = pacientes != null ? pacientes.Count : 0;
+            lblCantRegistros.Text = $"Se encontraron {count} registros";
         }
 
         private void txtSearchApenom_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
                 btnFiltrar_Click(null, null);
+        }
+
+        private void ListaPacientesGrid_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Seleccionar();
         }
     }
 }

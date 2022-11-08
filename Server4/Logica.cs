@@ -38,17 +38,31 @@ namespace Server
 
         public List<Paciente> ObtenerPacientes()
         {
-            return Repositorio.ObtenerTodos();
+            try
+            {
+                return Repositorio.ObtenerTodos();
+            }
+            catch
+            {
+                return new List<Paciente>();
+            }
         }
 
         public List<Sesion> ListarSesiones(int pacienteId)
         {
-            Paciente p = ObtenerPaciente(pacienteId);
-            //if(p.Sesiones == null)
-            //{
-            //   p.Sesiones = Repositorio.BuscarSesionesPaciente()
-            //}
-            return p.Sesiones;
+            try
+            {
+                Paciente p = ObtenerPaciente(pacienteId);
+                //if(p.Sesiones == null)
+                //{
+                //   p.Sesiones = Repositorio.BuscarSesionesPaciente()
+                //}
+                return p.Sesiones;
+            }
+            catch
+            {
+                return new List<Sesion>();
+            }
         }
         public void EliminarSesion(int sesionId, int pacienteId)
         {

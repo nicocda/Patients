@@ -18,7 +18,7 @@ namespace Fichero
         public delegate void OnSelectedHandler(object sender, Paciente e);
         public event OnSelectedHandler OnSelected;
         public event OnSelectedHandler OnDeleted;
-
+        Paciente paciente;
         public int? IdPacienteSeleccionado = null;
 
         public Paciente Value
@@ -26,7 +26,7 @@ namespace Fichero
             get
             {
                 if (IdPacienteSeleccionado.HasValue)
-                    return new Paciente() { Id = IdPacienteSeleccionado.Value, DNI = txtDniPaciente.Text, NombreApellido = txtNombrePaciente.Text };
+                    return paciente;
                 else return null;
             }
             set
@@ -74,6 +74,7 @@ namespace Fichero
             txtDniPaciente.Text = e.DNI;
             txtNombrePaciente.Text = e.NombreApellido;
             IdPacienteSeleccionado = e.Id;
+            paciente = e;
             OnSelected?.Invoke(this, e);
         }
 
@@ -122,7 +123,7 @@ namespace Fichero
         {
 
             VerPacientes form = new VerPacientes();
-            
+
             //BuscarPaciente form = null;
             //if (pacientes != null && pacientes.Count > 0)
             //    form = new BuscarPaciente(pacientes);
@@ -147,6 +148,7 @@ namespace Fichero
             IdPacienteSeleccionado = null;
             txtDniPaciente.Text = null;
             txtNombrePaciente.Text = null;
+            paciente = null;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -163,19 +165,21 @@ namespace Fichero
 
                     var sesiones = l.ListarSesiones(IdPacienteSeleccionado.Value);
                     bool resp = true;
-                    if (sesiones != null && sesiones.Count > 0)
-                    {
-                        dialogResult = MessageBox.Show("El paciente tiene Sesiones, desea eliminarlo de todas formas? Dichas sesiones se perderan", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        resp = (dialogResult == DialogResult.Yes);
+                    //if (sesiones != null && sesiones.Count > 0)
+                    //{
+                    //    dialogResult = MessageBox.Show("El paciente tiene Sesiones, desea eliminarlo de todas formas? Dichas sesiones se perderan", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    //    resp = (dialogResult == DialogResult.Yes);
 
+                    //}
+                    if (resp)
+                    {
+                        l.EliminarPaciente(new Paciente()
+                        {
+                            Id = IdPacienteSeleccionado.Value
+                        }, false);
+                        LimpiarCampos();
+                        OnDeleted?.Invoke(this, null);
                     }
-
-                    l.EliminarPaciente(new Paciente()
-                    {
-                        Id = IdPacienteSeleccionado.Value
-                    }, resp);
-                    LimpiarCampos();
-                    OnDeleted?.Invoke(this, null);
                 }
                 catch (Exception ex)
                 {

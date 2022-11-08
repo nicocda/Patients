@@ -108,6 +108,9 @@ namespace Fichero
             if (!pacienteUserControl1.TieneValor())
                 return;
 
+            if (string.IsNullOrEmpty(txtNuevoDetalle.Text))
+                return; 
+
             Sesion s = new Sesion();
             s.FechaHora = dateTimePicker.Value;
             s.Notas = txtNuevoDetalle.Text;
