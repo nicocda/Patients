@@ -21,13 +21,49 @@ namespace Fichero
             pacienteUserControl1.OnDeleted += PacienteUserControl1_OnDeleted;
             this.SizeChanged += ListarSesiones_ResizeEnd;
 
-            panel1.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
-          | AnchorStyles.Left)
-          | AnchorStyles.Right);
             AgregarScroll();
+            AplicarTema();
 
 
             dateTimePicker.Value = DateTime.Today;
+        }
+
+        private void AplicarTema()
+        {
+            Tema.Aplicar(this);
+
+            pnlCabecera.Height = Tema.Px(84);
+            pnlObservaciones.Height = Tema.Px(100);
+            pnlNuevaSesion.Height = Tema.Px(190);
+            pnlFecha.Height = Tema.Px(48);
+            label1.Width = Tema.Px(150);
+            lblObservaciones.Width = Tema.Px(190);
+            lblFechaSesion.Width = Tema.Px(190);
+            dateTimePicker.Width = Tema.Px(240);
+            pnlBotonObservacion.Width = Tema.Px(240);
+            pnlBotonAgregar.Width = Tema.Px(250);
+
+            pnlCabecera.BackColor = Tema.Cabecera;
+            label1.ForeColor = Color.White;
+            label1.Font = Tema.Normal(20F, FontStyle.Bold);
+
+            pnlObservaciones.BackColor = Tema.Aviso;
+            lblObservaciones.Font = Tema.Normal(16F, FontStyle.Bold);
+            txtExamenes.BackColor = Tema.Aviso;
+            txtExamenes.Font = Tema.Normal(20F);
+            Tema.Boton(btnEditarObservacion, Tema.Acento, 13F);
+
+            panel1.BackColor = Tema.Fondo;
+
+            pnlNuevaSesion.BackColor = Color.White;
+            lblFechaSesion.Font = Tema.Normal(16F, FontStyle.Bold);
+            dateTimePicker.Font = Tema.Normal(16F);
+            txtNuevoDetalle.Font = Tema.Normal(22F);
+            txtNuevoDetalle.BackColor = Color.White;
+            Tema.Boton(btnAgregar, Tema.Exito, 18F);
+
+            Tema.Boton(btnBuscar, Tema.Acento);
+            Tema.Boton(btnLimpiar, Color.FromArgb(0x5B, 0x6B, 0x7C));
         }
 
         private void PacienteUserControl1_OnDeleted(object sender, Paciente e)
@@ -38,7 +74,7 @@ namespace Fichero
         private void AgregarScroll()
         {
             panel1.AutoScroll = true;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.BorderStyle = BorderStyle.None;
 
 
             panel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -79,11 +115,12 @@ namespace Fichero
                 int x = 30;
                 int y = 10;
                 SesionVisual control = null;
+                // Se calcula una sola vez: el scrollbar puede aparecer a mitad del ciclo y cambiar el ClientSize.
+                int width = panel1.Width - panel1.Padding.Horizontal - SystemInformation.VerticalScrollBarWidth - SesionVisual.MargenHorizontal;
                 foreach (var s in sesiones)
                 {
                     control = new SesionVisual(s);
                     y = y + control.Size.Height + 10;
-                    int width = panel1.Size.Width-30;
                     control.SetTamaño(width);
                     panel1.Controls.Add(control);
 

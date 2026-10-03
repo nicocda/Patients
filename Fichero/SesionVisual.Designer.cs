@@ -29,7 +29,6 @@ namespace Fichero
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SesionVisual));
             this.txtNota = new System.Windows.Forms.RichTextBox();
             this.lblFecha = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -37,12 +36,9 @@ namespace Fichero
             // 
             // txtNota
             // 
-            this.txtNota.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNota.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNota.Font = new System.Drawing.Font("Segoe UI Symbol", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNota.Location = new System.Drawing.Point(16, 26);
+            this.txtNota.Location = new System.Drawing.Point(24, 56);
             this.txtNota.Name = "txtNota";
             this.txtNota.ReadOnly = true;
             this.txtNota.Size = new System.Drawing.Size(113, 28);
@@ -53,8 +49,8 @@ namespace Fichero
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(0, 2);
+            this.lblFecha.Font = new System.Drawing.Font("Segoe UI Symbol", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(20, 8);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(153, 21);
             this.lblFecha.TabIndex = 1;
@@ -62,12 +58,11 @@ namespace Fichero
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.Location = new System.Drawing.Point(109, 3);
+            this.btnEliminar.Location = new System.Drawing.Point(300, 12);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(17, 14);
+            this.btnEliminar.Size = new System.Drawing.Size(120, 40);
             this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 

@@ -19,6 +19,8 @@ namespace Fichero.AbmPaciente
         public AgregarPaciente()
         {
             InitializeComponent();
+            Tema.Aplicar(this);
+            Tema.Ampliar(this, 1.8F);
             GenHombre.Checked = true;
         }
 

@@ -129,6 +129,7 @@
       <DependentUpon>SesionVisual.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="Tema.cs" />
     <EmbeddedResource Include="AbmPaciente\AgregarPaciente.resx">
       <DependentUpon>AgregarPaciente.cs</DependentUpon>
     </EmbeddedResource>

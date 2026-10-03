@@ -53,6 +53,11 @@ namespace Fichero
 
             //btnNew.Visible = false;
             btnEliminar.Visible = false;
+
+            Tema.Campo(txtNombrePaciente, 22F);
+            Tema.Boton(btnBuscar, Tema.Acento);
+            Tema.Boton(btnNew, Tema.Exito);
+            Tema.Boton(btnEliminar, Tema.Peligro);
         }
 
 

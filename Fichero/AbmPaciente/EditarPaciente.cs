@@ -20,6 +20,8 @@ namespace Fichero.AbmPaciente
         public EditarPaciente(Paciente p)
         {
             InitializeComponent();
+            Tema.Aplicar(this);
+            Tema.Ampliar(this, 1.8F);
 
 
             NombreApellido.Text = p.NombreApellido;

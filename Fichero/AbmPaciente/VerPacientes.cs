@@ -21,6 +21,28 @@ namespace Fichero.AbmPaciente
         public VerPacientes()
         {
             InitializeComponent();
+            AplicarTema();
+        }
+
+        private void AplicarTema()
+        {
+            BackColor = Tema.Fondo;
+            pnlCabecera.Height = Tema.Px(80);
+            pnlFiltro.Width = Tema.Px(520);
+            pnlPie.Height = Tema.Px(48);
+            pnlCabecera.BackColor = Tema.Cabecera;
+            pnlPie.BackColor = Tema.Fondo;
+
+            Tema.Grilla(ListaPacientesGrid);
+            Tema.Campo(txtSearchApenom, 20F);
+            lblCantRegistros.Font = Tema.Normal(16F, FontStyle.Bold);
+            lblCantRegistros.ForeColor = Tema.Texto;
+
+            Tema.Boton(btnFiltrar, Tema.Acento);
+            Tema.Boton(btnSelect, Tema.Exito);
+            Tema.Boton(btnEditar, Tema.Acento);
+            Tema.Boton(btnNuevo, Tema.Acento);
+            Tema.Boton(btnEliminar, Tema.Peligro);
         }
 
         private void VerPacientes_Load(object sender, EventArgs e)
