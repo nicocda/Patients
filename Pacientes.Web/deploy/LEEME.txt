@@ -1,0 +1,37 @@
+PACIENTES WEB
+=============
+
+Ver la agenda y el historial de pacientes desde el celular o desde cualquier PC de la misma red.
+Los datos quedan en esta PC. No se publica nada en internet.
+
+INSTALAR (una sola vez)
+  1. Copie esta carpeta completa a un lugar fijo, por ejemplo  C:\Pacientes
+     (no la deje en Descargas ni en el Escritorio).
+  2. Doble clic en  instalar.bat  y acepte el permiso de administrador.
+  3. Si pide la ruta de la base de datos, escriba la ruta completa de su dbPacientes.db.
+  4. Elija un PIN (minimo 6 caracteres). Es la clave que protege los datos.
+  El programa queda funcionando y se inicia solo cada vez que se enciende la PC.
+
+CONECTAR UN CELULAR
+  1. Doble clic en  vincular-celular.bat  (en la PC).
+  2. Con el celular conectado al MISMO Wi-Fi, escanee el codigo QR con Chrome o la camara.
+  3. Listo: queda autorizado por 6 meses y no hace falta escribir el PIN.
+  Si el QR no se puede usar, abra en el celular la direccion  http://IP-DE-LA-PC:8080
+  (la muestra instalar.bat) e ingrese el PIN.
+
+SI SE OLVIDA EL PIN / SE PIERDE UN CELULAR
+  Doble clic en  cambiar-pin.bat  y elija uno nuevo. Todos los celulares vuelven a pedirlo.
+  (El PIN no se puede ver ni recuperar: solo se cambia.)
+
+COPIAS DE SEGURIDAD
+  Se hace una copia automatica todos los dias a las 22:00 en la carpeta  backups  (las ultimas 30).
+  Si indico otra carpeta al instalar (disco externo, OneDrive), tambien se copia ahi.
+  Para hacer una copia ahora: respaldar-ahora.bat
+  Las copias contienen datos de salud sin cifrar: guardelas en lugares de confianza.
+
+SI ALGO NO FUNCIONA
+  - El celular no abre la pagina: debe estar en el mismo Wi-Fi que la PC, y la PC encendida.
+    Si la IP de la PC cambio, reserve una IP fija para la PC en el router.
+  - Antivirus (Avast, etc.): agregue esta carpeta a las exclusiones.
+  - Registro del programa: carpeta  logs\pacientes.log
+  - Para quitar todo: desinstalar.bat (no borra la base de datos ni las copias).

@@ -45,7 +45,7 @@ namespace Server.Repositories
         internal List<Sesion> BuscarSesionesDia(DateTime dia)
         {
             DateTime finDia = dia.AddDays(1);
-            return Context.Sesiones.Include("Paciente").Where(x => x.FechaHora > dia && x.FechaHora < finDia).OrderBy(x => x.FechaHora).ToList();
+            return Context.Sesiones.Where(x => x.FechaHora >= dia && x.FechaHora < finDia).OrderBy(x => x.FechaHora).ToList();
         }
 
         internal Paciente ObtenerPorNombreyDni(string nombreApellido, string dni)
@@ -83,10 +83,11 @@ namespace Server.Repositories
 
         internal void EliminarSesiones(List<Sesion> sesiones)
         {
-            for (int i = 0; sesiones.Count > i;i++)
+            // Copia: EF quita cada sesion borrada de la coleccion del paciente mientras se recorre.
+            foreach (var sesion in sesiones.ToList())
             {
-                Context.Sesiones.Attach(sesiones[i]);
-                Context.Entry(sesiones[i]).State = System.Data.Entity.EntityState.Deleted;
+                Context.Sesiones.Attach(sesion);
+                Context.Entry(sesion).State = System.Data.Entity.EntityState.Deleted;
             }
             Context.SaveChanges();
         }

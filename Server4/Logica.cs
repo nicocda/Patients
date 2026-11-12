@@ -87,17 +87,17 @@ namespace Server
 
                 if (eliminaSesiones)
                     Repositorio.EliminarSesiones(p.Sesiones);
-                else if (p.Sesiones != null && p.Sesiones.Count > 1)
+                else if (p.Sesiones != null && p.Sesiones.Count > 0)
                     throw new Exception("El paciente contiene sesiones, Borrelas antes de eliminar el paciente");
 
                 Repositorio.EliminarPaciente(p);
                 tran.Commit();
             }
-            catch (Exception ex)
+            catch
             {
                 if (tran != null)
                     tran.Rollback();
-                throw ex;
+                throw;
             }
         }
 
@@ -134,6 +134,55 @@ namespace Server
 
             Repositorio.Guardar(pacienteDB);
             return pacienteDB;
+        }
+
+        /// <summary>
+        /// Crea o actualiza solo los datos del paciente. No toca sus sesiones.
+        /// </summary>
+        public Paciente GuardarDatosPaciente(Paciente p)
+        {
+            if (p == null)
+                throw new Exception("Error al reconocer un paciente");
+            if (string.IsNullOrWhiteSpace(p.NombreApellido))
+                throw new Exception("Indique nombre y apellido");
+
+            Paciente repetido = Repositorio.ObtenerPorNombreyDni(p.NombreApellido, p.DNI);
+            if (repetido != null && repetido.Id != p.Id)
+                throw new Exception("Ya existe un paciente con ese nombre y Dni");
+
+            Paciente pacienteDB;
+            if (p.Id == 0)
+                pacienteDB = new Paciente();
+            else
+            {
+                pacienteDB = Repositorio.ObtenerPacienteId(p.Id);
+                if (pacienteDB == null)
+                    throw new Exception("Paciente no encontrado");
+            }
+            pacienteDB.NombreApellido = p.NombreApellido;
+            pacienteDB.NroTelefono = p.NroTelefono;
+            pacienteDB.DiaNacimiento = p.DiaNacimiento;
+            pacienteDB.Direccion = p.Direccion;
+            pacienteDB.DNI = p.DNI;
+            pacienteDB.Genero = p.Genero;
+            pacienteDB.Localidad = p.Localidad;
+            pacienteDB.Observaciones = p.Observaciones;
+
+            Repositorio.Guardar(pacienteDB);
+            return pacienteDB;
+        }
+
+        public void EditarSesion(int pacienteId, int sesionId, DateTime fechaHora, string notas)
+        {
+            Paciente p = ObtenerPaciente(pacienteId);
+            Sesion s = p.Sesiones == null ? null : p.Sesiones.FirstOrDefault(x => x.Id == sesionId);
+            if (s == null)
+                throw new Exception("No se encontro la sesion");
+            if (p.Sesiones.Any(x => x.Id != sesionId && x.FechaHora == fechaHora))
+                throw new Exception("Ya existe una sesion en esa fecha y hora");
+            s.FechaHora = fechaHora;
+            s.Notas = notas;
+            Repositorio.Guardar(p);
         }
 
         public Paciente ObtenerPaciente(int pacienteId)

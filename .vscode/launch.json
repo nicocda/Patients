@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Pacientes.Api corre dentro de Pacientes.Web (un solo proceso), asi que dev.ps1 levanta ambos.
+      "name": "Pacientes Web + API (F5)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\dev.ps1",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

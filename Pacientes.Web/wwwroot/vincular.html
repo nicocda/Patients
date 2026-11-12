@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Vincular celular</title>
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main class="vinc">
+    <img src="icons/icon-192.png" alt="" width="72" height="72" style="margin:0 auto">
+    <h1>Vincular un celular</h1>
+    <div id="msg" class="muted">Generando código…</div>
+    <div class="qr" id="qr"></div>
+    <div id="detalle" hidden>
+      <p>Si el QR no funciona, abra esta dirección en el celular y use el código:</p>
+      <p class="code" id="code"></p>
+      <p id="urls" class="muted"></p>
+      <p class="muted" id="vence"></p>
+    </div>
+    <ol id="pasos" hidden>
+      <li>El celular debe estar conectado al <b>mismo Wi‑Fi</b> que esta PC.</li>
+      <li>Abra la cámara del celular y apunte al código QR.</li>
+      <li>Toque el enlace que aparece. Quedará autorizado, sin escribir el PIN.</li>
+    </ol>
+    <div class="actions" style="justify-content:center"><button class="btn primary" id="otro" type="button">Generar otro código</button></div>
+  </main>
+  <script src="lib/qrcode.js"></script>
+  <script>
+    (function () {
+      var $ = function (s) { return document.querySelector(s); };
+      var timer;
+      function generar() {
+        clearInterval(timer);
+        $('#msg').textContent = 'Generando código…';
+        fetch('/api/vincular/nuevo', { cache: 'no-store' }).then(function (r) {
+          return r.json().then(function (d) { if (!r.ok) throw new Error(d.error || 'Error ' + r.status); return d; });
+        }).then(function (d) {
+          if (!d.direcciones.length) throw new Error('Esta PC no tiene una dirección de red local (¿está conectada al Wi‑Fi o cable?).');
+          var url = d.direcciones[0] + '/#/vincular/' + d.codigo;
+          var qr = qrcode(0, 'M'); qr.addData(url); qr.make();
+          $('#qr').innerHTML = qr.createSvgTag({ cellSize: 6, margin: 2, scalable: true });
+          $('#code').textContent = d.codigo;
+          $('#urls').textContent = d.direcciones.join('   ·   ');
+          $('#msg').textContent = 'Escanee este código con el celular';
+          $('#detalle').hidden = false; $('#pasos').hidden = false;
+          var vence = Date.now() + d.segundos * 1000;
+          timer = setInterval(function () {
+            var s = Math.round((vence - Date.now()) / 1000);
+            if (s <= 0) { clearInterval(timer); $('#vence').textContent = 'El código venció. Genere otro.'; $('#qr').innerHTML = ''; return; }
+            $('#vence').textContent = 'Vence en ' + Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2) + ' · se puede usar una sola vez';
+          }, 1000);
+        }).catch(function (e) {
+          $('#msg').textContent = e.message; $('#qr').innerHTML = ''; $('#detalle').hidden = true; $('#pasos').hidden = true;
+        });
+      }
+      $('#otro').onclick = generar;
+      generar();
+    })();
+  </script>
+</body>
+</html>
